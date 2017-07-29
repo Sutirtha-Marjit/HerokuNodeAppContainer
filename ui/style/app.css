@@ -83,8 +83,6 @@ p{
     padding: 0.5rem 0.7rem 0.99rem;
     background: rgba(0,0,0,0.6);
     border-radius: 5px;
-    transition: all 0.3s ease-in-out;
-    transform: translateY(200px);
     opacity: 0;
 }
 
