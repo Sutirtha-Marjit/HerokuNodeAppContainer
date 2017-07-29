@@ -1,5 +1,6 @@
 function AppController(){
     var bgRandom = function(){
+        var preloader=null;
         var styleText="";
         var imgSources = [
             "http://blogs.reuters.com/photographers-blog/files/2014/04/Envira_05x.jpg",
@@ -10,7 +11,11 @@ function AppController(){
             "https://c308991.ssl.cf1.rackcdn.com/SiteFiles/Venues/6089/af297616-afac-4d93-a87c-0dbf037906b5.jpg",
             "http://i.imgur.com/khR8dGXr.jpg",
             "http://7-themes.com/data_images/out/47/6929611-park-bench-at-night.jpg",
-            "https://www.gymmembershipfees.com/wp-content/uploads/2015/09/Are-Night-Workouts-Effective-GymMembershipFees.jpg"
+            "https://www.gymmembershipfees.com/wp-content/uploads/2015/09/Are-Night-Workouts-Effective-GymMembershipFees.jpg",
+            "http://3.bp.blogspot.com/_gNlVCAdxYno/THMt7WscAnI/AAAAAAAABns/6NrbotDc9mo/s1600/I_0134.jpg",
+            "http://cdn.deccanchronicle.com/sites/default/files/Sunil_2_0.jpg",
+            "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/05/02/18/Mike-Tyson.jpg"
+            
         ];
 
         imgSources.forEach(function(val,index){
@@ -22,13 +27,17 @@ function AppController(){
         var imgBGStyle = document.createElement('style');
         var styleTextContent = document.createTextNode(styleText);
         var imgTag = document.createElement('IMG');
+        preloader = document.querySelector('.preloader');
         imgTag.onload = function(){
-            bgDiv.classList.add('complete');            
+            bgDiv.classList.add('complete');   
+            preloader.classList.add('hide');
         }
         imgTag.onerror = function(){
             bgDiv.classList.remove(window["CurrentBGClass"]);
             bgDiv.classList.add('BG0');
-            bgDiv.classList.add('complete');            
+            bgDiv.classList.add('complete');
+            preloader.classList.add('hide');
+            
         } 
         
         imgBGStyle.appendChild(styleTextContent);
