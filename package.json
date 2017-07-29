@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Sutirtha-Marjit/HerokuNodeAppContainer/issues"
   },
-  "homepage": "https://github.com/Sutirtha-Marjit/HerokuNodeAppContainer#readme"
+  "homepage": "https://github.com/Sutirtha-Marjit/HerokuNodeAppContainer#readme",
+  "engines": {
+    "node": "4.1.0"
+  }
 }
