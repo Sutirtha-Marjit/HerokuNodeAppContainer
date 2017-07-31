@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+  font-family: 'Lato' !important;    
+}
+.nomargin{
+    margin:0px;
+}
+
+.app-bg{
+    background-image: url('https://www.sajan.com/wp-content/uploads/2014/09/blurry-color.jpg');
+    background-size: auto 150%;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.console{
+    background:rgba(233,233,233,0.8);
+    padding: 100px 20px 20px 20px;
+    position: fixed;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    -webkit-box-shadow: 0px 6px 3px 1px rgba(0,0,0,0.21);
+    -moz-box-shadow: 0px 6px 3px 1px rgba(0,0,0,0.21);
+    box-shadow: 0px 6px 3px 1px rgba(0,0,0,0.21);
+    transition: all 0.5s ease-in-out;
+    transform: translateY(-120%);
+    z-index: 0;
+
+}
+
+.navbar{
+    z-index:2; 
+    box-shadow: 0px 6px 3px 1px rgba(0,0,0,0.06);
+} 
+
+.console.open{
+   transform: translateY(0%); 
+}
+
+body.appbody{
+    background: maroon;
+}
