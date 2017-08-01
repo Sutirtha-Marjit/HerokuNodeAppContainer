@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
+import {CommonImageTrackerService} from './services/common-image-tracker.service';
 
 
 @Component({
@@ -10,17 +11,29 @@ import {FormGroup, FormControl} from '@angular/forms';
 export class AppComponent {
   private consoleEl:HTMLDivElement;  
   public formgrp:FormGroup;
-  constructor(){   
+  constructor(private imageTrckerService:CommonImageTrackerService){ 
+
     this.formgrp = new FormGroup({
       pPath: new FormControl(''),
       sPath: new FormControl(''),
-      zeroPattern: new FormControl('')
+      zeroPattern: new FormControl(''),
+      rangeStart: new FormControl('1'),
+      rangeEnd : new FormControl('12')
     });
     
   }
 
   onSubmit(){
-    this.formgrp.controls["pPath"].value
+   console.log(this.imageTrckerService.generatePath);
+
+   this.imageTrckerService.generatePath({
+      primaryPath:this.formgrp.controls["pPath"].value,
+      secondaryPath:this.formgrp.controls["sPath"].value,
+      zeroPattern:this.formgrp.controls["zeroPattern"].value,
+      rangeStart:this.formgrp.controls["rangeStart"].value,      
+      rangeEnd:this.formgrp.controls["rangeEnd"].value
+    });
+    
   }
 
   ngOnInit(){
