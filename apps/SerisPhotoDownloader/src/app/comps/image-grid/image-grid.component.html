@@ -1,19 +1,38 @@
 <div class="image-grid container-fluid">
   <div class="btn-group">
-    <a class="btn btn-warning">Original</a>
-    <a class="btn btn-warning">List</a>
-    <a class="btn btn-warning">Grid</a>
+    <a id="linkPadOpener" *ngIf="linkArray.length>0" (click)="toggleLinkPad()" class="btn btn-success">Link report</a>
   </div>
-  <hr/>
+  <div id="linkpad" style="margin-top:20px;">
+    <ol class="list-group">
+      <li class="list-group-item" *ngFor="let link of linkArray">
+        <a href="{{link}}" target="_blank"><small>{{link}}</small></a>
+      </li>
+    </ol>
+  </div>
+  <hr *ngIf="linkArray.length>0"/>
   <div class="image-container">
-    <div class=" col-xs-4 nomargin nopadding">
+    
+    <div *ngFor="let imgobj of imageObjectCollection; let idx = index" class=" col-xs-3 nomargin nopadding">
+      
       <div class="imgEl">
-        <img src="http://bit.ly/2ueS6G2"/>
+        <img *ngIf="imgobj.exists" src="{{imgobj.image.src}}"/>
+        <div *ngIf="imgobj.exists" class="prop-board">
+          <h4>{{idx}}</h4>
+          <h6>Loaded</h6>
+          <hr/>
+          <div><a class="btn btn-primary btn-sm" href="{{imgobj.image.src}}" download=""><small>Download</small></a></div>
+          <small>{{imgobj.width}} × {{imgobj.height}}</small>
+        </div>
+        <div *ngIf="!imgobj.exists" class="prop-board">
+          <h4>{{idx}}</h4>
+          <h6 class="text-danger">Not available</h6>
+          <hr/>
+          <small class="text-danger">{{imgobj.image.src}}</small>
+        </div>
       </div>
+
+     
     </div>
-    <div class=" col-xs-4 nomargin nopadding">
-        <div class="imgEl">            
-      </div>
-    </div>
+    
   </div>
 </div>

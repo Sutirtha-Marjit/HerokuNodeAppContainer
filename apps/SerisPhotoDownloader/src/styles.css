@@ -10,17 +10,39 @@
     padding:0px;
 }
 
+.prop-board{
+    position: absolute;
+    height: 100%;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    background: rgba(0,0,0,0.9);
+    color:white;
+    padding: 10px;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+}
+
 .app-bg{
     background-image: url('https://www.sajan.com/wp-content/uploads/2014/09/blurry-color.jpg');
     background-size: 100% 150%;
     position: fixed;
     width: 100%;
     height: 100%;
+    overflow-y:scroll;
+}
+
+#linkpad{
+    display: none;
+}
+
+#linkpad.open{
+    display: block;
 }
 
 .console{
     background:rgba(233,233,233,1);
-    padding: 100px 20px 20px 20px;
+    padding: 70px 20px 20px 20px;
     position: fixed;
     top:0px;
     left: 0px;
@@ -53,6 +75,18 @@ width: 100%;
 height:260px;     
 background: rgba(255,255,255,0.2);
 overflow: hidden;
+position: relative;
+border-bottom:dashed 1px rgba(255,255,255,0.4);
+}
+
+.imgEl:hover .prop-board{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.image-container>div:nth-child(odd){
+ background: rgba(0,0,0,0.1);
+
 }
 body.appbody{
     background: maroon;

@@ -1,24 +1,20 @@
 <div>
   <nav class="navbar navbar-default">
     <div class="navbar-header">
-      <a (click)="menuToggle()" id="menu-opener" class="navbar-brand" href="#">Menu</a>
+      <a (click)="menuToggle()" id="menu-opener" class="navbar-brand">Menu</a>
     </div>
   </nav>
   <app-image-grid></app-image-grid>
 </div>
-<div class="console no-margin">
+<div class="console no-margin open">
   <form (ngSubmit)="onSubmit()"  class="form-horizontal" novalidate [formGroup]="formgrp">
         <div class="form-group col-sm-12">
               <label style="text-align:left" for="" class="col-sm-12 control-label">Path segments</label>
         </div>
         
-        <div class="form-group col-sm-12">
-          
+        <div class="form-group col-sm-12">          
             <div class="checkbox" style="margin-left:20px;">
-              <label>
-                <input formControlName="zeroPattern" type="checkbox"> Starting with zero pattern
-              </label>
-            
+              <label><input formControlName="zeroPattern" type="checkbox"> Starting with zero pattern</label>            
           </div>
         </div>
         <div class="col-sm-2"><input formControlName="rangeStart"   type="number" class="form-control"  placeholder="Range Start"/></div>
