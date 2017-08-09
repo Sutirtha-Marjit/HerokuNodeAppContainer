@@ -1,12 +1,12 @@
 var CustomJobs=function(){
-    /*
+    
     const fs = require('fs');
     const jsdom = require("jsdom");
     const {JSDOM} = jsdom;
     var pilotFileName = "pilot.index.html";
 
     console.log(pilotFileName);
-
+    /*
     this.appIndexFileModifier = function(appName){
         var indexFilePath = "./apps/"+appName+'/dist/index.html';
         var path = "./apps/"+appName+"/dist/"+pilotFileName;
