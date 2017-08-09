@@ -1,7 +1,14 @@
 var CustomJobs=function(){
     
     const fs = require('fs');
-    const jsdom = require("jsdom");
+    var jsdom;
+    try{
+        jsdom = require("jsdom");
+    }catch(e){
+        console.log('ERROR');
+        console.log(e);
+    }
+    
     //const JSDOM = jsdom;
     var pilotFileName = "pilot.index.html";
 

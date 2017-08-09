@@ -12,7 +12,7 @@ function AppBegin(){
     
     app.use(express.static('ui'));    
     console.log('Static folder assigned');
-    app.use('/node_modules',express.static('node_modules/'));
+    
     app.use('/SerisPhotoDownloader', express.static('apps/SerisPhotoDownloader/dist/'));
 
     console.log('Ready to listen');
