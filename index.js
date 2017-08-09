@@ -6,9 +6,9 @@ function AppBegin(){
     console.log('Dependencies loaded into environment');
     const app = express();
     console.log('Express app created');
-    var customjobs = new CustomJobs();
-    customjobs.appIndexFileModifier('SerisPhotoDownloader');
-    console.log('SerisPhotoDownloader configured');
+   // var customjobs = new CustomJobs();
+   // customjobs.appIndexFileModifier('SerisPhotoDownloader');
+  //  console.log('SerisPhotoDownloader configured');
     app.use(express.static('ui'));    
     console.log('Static folder assigned');
     app.use('/SerisPhotoDownloader', express.static('apps/SerisPhotoDownloader/dist/'));
