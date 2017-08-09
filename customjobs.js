@@ -1,19 +1,11 @@
 var CustomJobs=function(){
     
     const fs = require('fs');
-    var jsdom;
-    try{
-        jsdom = require("jsdom");
-    }catch(e){
-        console.log('ERROR');
-        console.log(e);
-    }
-    
-    //const JSDOM = jsdom;
+    var jsdom = require('node-jsdom');
     var pilotFileName = "pilot.index.html";
 
     console.log(pilotFileName);
-    /*
+    
     this.appIndexFileModifier = function(appName){
         var indexFilePath = "./apps/"+appName+'/dist/index.html';
         var path = "./apps/"+appName+"/dist/"+pilotFileName;
@@ -23,6 +15,8 @@ var CustomJobs=function(){
                 if(error){
                     console.log(error);
                 }else{
+                    console.log('data found!');
+                    /*
                     var jsdom = new JSDOM(data);
                     var scripts = jsdom.window.document.querySelectorAll('script');
                     for(var i=0;i<scripts.length;i++){
@@ -37,14 +31,14 @@ var CustomJobs=function(){
                             console.log(pilotFileName+" has been created.");
                         }
                     });
-
+                    */
                 }
                 
             });
         }    
     };
 
-*/
+
 
 };
 

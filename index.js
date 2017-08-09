@@ -7,8 +7,8 @@ function AppBegin(){
     const app = express();
     console.log('Express app created');
     var customjobs = new CustomJobs();
-   // customjobs.appIndexFileModifier('SerisPhotoDownloader');
-  //  console.log('SerisPhotoDownloader configured');
+     customjobs.appIndexFileModifier('SerisPhotoDownloader');
+     console.log('SerisPhotoDownloader configured');
     
     app.use(express.static('ui'));    
     console.log('Static folder assigned');
