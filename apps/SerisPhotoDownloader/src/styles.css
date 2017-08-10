@@ -24,7 +24,7 @@
 }
 
 .app-bg{
-    background-image: url('https://www.sajan.com/wp-content/uploads/2014/09/blurry-color.jpg');
+    background-image: url('https://hdwallsource.com/img/2014/9/free-blurry-wallpaper-35108-35912-hd-wallpapers.jpg');
     background-size: 100% 150%;
     position: fixed;
     width: 100%;
@@ -90,4 +90,21 @@ border-bottom:dashed 1px rgba(255,255,255,0.4);
 }
 body.appbody{
     background: maroon;
+}
+
+a.navbar-brand{
+    transition: all 0.5s ease-in-out;
+}
+
+a.navbar-brand.open{
+    background:black;
+    color:#fff;
+}
+a.navbar-brand.open:hover{
+    background:black;
+    color:#ffcc00;
+}
+
+a#linkPadOpener.open{
+    background:black;
 }

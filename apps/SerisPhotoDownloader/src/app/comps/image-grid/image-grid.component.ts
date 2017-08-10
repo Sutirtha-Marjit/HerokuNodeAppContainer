@@ -79,7 +79,11 @@ export class ImageGridComponent implements OnInit {
     
   }
 
-
+ cleanGrid(){
+   this.linkArray=[];
+   this.imageArray=[];
+   this.imageObjectCollection=[];
+ }
 
   toggleLinkPad(){
       

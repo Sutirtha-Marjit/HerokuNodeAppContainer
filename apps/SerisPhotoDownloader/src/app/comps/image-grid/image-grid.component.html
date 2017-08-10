@@ -1,6 +1,7 @@
 <div class="image-grid container-fluid">
   <div class="btn-group">
     <a id="linkPadOpener" *ngIf="linkArray.length>0" (click)="toggleLinkPad()" class="btn btn-success">Link report</a>
+    <a id="cleanGrid" *ngIf="linkArray.length>0" (click)="cleanGrid()" class="btn btn-primary">Clean grid</a>
   </div>
   <div id="linkpad" style="margin-top:20px;">
     <ol class="list-group">
