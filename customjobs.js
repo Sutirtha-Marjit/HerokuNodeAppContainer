@@ -1,37 +1,34 @@
 var CustomJobs=function(){
     
     const fs = require('fs');
-    var jsdom = require('node-jsdom');
+    const pathsToChange = {
+        defalut:["inline.bundle.js","polyfills.bundle.js","styles.bundle.js","vendor.bundle.js","main.bundle.js"]        
+    };
     var pilotFileName = "pilot.index.html";
-
-    console.log(pilotFileName);
+    
+    
     
     this.appIndexFileModifier = function(appName){
-        var indexFilePath = "./apps/"+appName+'/dist/index.html';
-        var path = "./apps/"+appName+"/dist/"+pilotFileName;
+        var contentString,indexFilePath,path;
+        indexFilePath = "./apps/"+appName+'/dist/index.html';
+        path = "./apps/"+appName+"/dist/"+pilotFileName;
         if (!fs.existsSync(path)) {
             console.log(path+" is not available.");
             fs.readFile(indexFilePath,'utf8',function(error,data){
                 if(error){
                     console.log(error);
                 }else{
-                    console.log('data found!');
-                    /*
-                    var jsdom = new JSDOM(data);
-                    var scripts = jsdom.window.document.querySelectorAll('script');
-                    for(var i=0;i<scripts.length;i++){
-                        scripts[i].src = appName+"/"+scripts[i].src;                        
-                    }
-
-                    var mainHTML = '<!doctype><html>'+jsdom.window.document.documentElement.innerHTML+'</html>';
-                    fs.writeFile(path,mainHTML,function(err){
-                        if(err){
-                            console.log(err);
-                        }else{
-                            console.log(pilotFileName+" has been created.");
-                        }
-                    });
-                    */
+                  contentString = data;
+                  pathsToChange.defalut.forEach(function(val){
+                      contentString = contentString.replace(val,appName+'/'+val);
+                  });
+                  fs.writeFile(path,contentString,function(error){
+                      if(error){
+                          console.log('Problem creating file '+path);
+                      }else{
+                          console.log(pilotFileName+' created successfully');
+                      }
+                  });
                 }
                 
             });
