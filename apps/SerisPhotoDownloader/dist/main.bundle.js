@@ -46,7 +46,7 @@ module.exports = "<div>\n  <nav class=\"navbar navbar-default\">\n    <div class
 /***/ 139:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"image-grid container-fluid\">\n  <div class=\"btn-group\">\n    <a id=\"linkPadOpener\" *ngIf=\"linkArray.length>0\" (click)=\"toggleLinkPad()\" class=\"btn btn-success\">Link report</a>\n    <a id=\"cleanGrid\" *ngIf=\"linkArray.length>0\" (click)=\"cleanGrid()\" class=\"btn btn-primary\">Clean grid</a>\n  </div>\n  <div id=\"linkpad\" style=\"margin-top:20px;\">\n    <ol class=\"list-group\">\n      <li class=\"list-group-item\" *ngFor=\"let link of linkArray\">\n        <a href=\"{{link}}\" target=\"_blank\"><small>{{link}}</small></a>\n      </li>\n    </ol>\n  </div>\n  <hr *ngIf=\"linkArray.length>0\"/>\n  <div class=\"image-container\">\n    \n    <div *ngFor=\"let imgobj of imageObjectCollection; let idx = index\" class=\" col-xs-3 nomargin nopadding\">\n      \n      <div class=\"imgEl\">\n        <img *ngIf=\"imgobj.exists\" src=\"{{imgobj.image.src}}\"/>\n        <div *ngIf=\"imgobj.exists\" class=\"prop-board\">\n          <h4>{{idx}}</h4>\n          <h6>Loaded</h6>\n          <hr/>\n          <div><a class=\"btn btn-primary btn-sm\" href=\"{{imgobj.image.src}}\" download=\"\"><small>Download</small></a></div>\n          <small>{{imgobj.width}} × {{imgobj.height}}</small>\n        </div>\n        <div *ngIf=\"!imgobj.exists\" class=\"prop-board\">\n          <h4>{{idx}}</h4>\n          <h6 class=\"text-danger\">Not available</h6>\n          <hr/>\n          <small class=\"text-danger\">{{imgobj.image.src}}</small>\n        </div>\n      </div>\n\n     \n    </div>\n    \n  </div>\n</div>\n"
+module.exports = "<div class=\"image-grid container-fluid\">\n  <div class=\"btn-group\">\n    <a id=\"linkPadOpener\" *ngIf=\"linkArray.length>0\" (click)=\"toggleLinkPad()\" class=\"btn btn-success\">Link report</a>\n    <a id=\"cleanGrid\" *ngIf=\"linkArray.length>0\" (click)=\"cleanGrid()\" class=\"btn btn-primary\">Clean grid</a>\n  </div>\n  <div id=\"linkpad\" style=\"margin-top:20px;\">\n    <ol class=\"list-group\">\n      <li class=\"list-group-item\" *ngFor=\"let link of linkArray; let serial = index\">\n        \n        <span *ngIf=\"imageObjectCollection[serial].exists\"><input type=\"checkbox\" [(ngModel)]=\"imageObjectCollection[serial].includedInZip\" ></span> \n        <span>&nbsp;&nbsp;&nbsp;<a href=\"{{link}}\" target=\"_blank\"><small>{{link}}</small></a></span>\n      </li>\n    </ol>\n  </div>\n  <hr *ngIf=\"linkArray.length>0\"/>\n  <div class=\"image-container\">\n    \n    <div *ngFor=\"let imgobj of imageObjectCollection; let idx = index\" class=\" col-sm-3 nomargin nopadding\">\n      \n      <div class=\"imgEl\">\n        <img *ngIf=\"(imgobj.status==='loaded')\" src=\"{{imgobj.image.src}}\"/>\n        <div *ngIf=\"(imgobj.status==='loaded')\" class=\"prop-board\">\n          <h4>{{idx}}</h4>\n          <h6>Loaded</h6>\n          <input type=\"checkbox\"/>\n          <hr/>\n          <div><a class=\"btn btn-primary btn-sm\" href=\"{{imgobj.image.src}}\" download=\"\"><small>Download</small></a></div>\n          <small>{{imgobj.width}} × {{imgobj.height}}</small>\n        </div>\n        \n        <div *ngIf=\"(imgobj.status==='error')\" class=\"prop-board error\">\n          <h4>{{idx}}</h4>\n          <h6 class=\"text-danger\">Not available</h6>\n          <hr/>\n          <small class=\"text-danger\">{{imgobj.image.src}}</small>\n        </div>\n\n        <div *ngIf=\"(imgobj.status==='loading')\" class=\"prop-board fixed loading\">\n          <h4>Loading...</h4>\n        </div>  \n      </div>\n\n     \n    </div>\n    \n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -145,13 +145,13 @@ var ImageGridComponent = (function () {
         var imobj = this.imageObjectCollection[e.currentTarget.getAttribute('data-index')];
         if (e.type === "error") {
             imobj.exists = false;
+            imobj.status = "error";
         }
         if (e.type === "load") {
             imobj.exists = true;
             imobj.width = imobj.image.width;
             imobj.height = imobj.image.height;
-            console.log('LOADED');
-            console.log(imobj);
+            imobj.status = "loaded";
         }
         this.imageObjectCollection[e.currentTarget.getAttribute('data-index')] = imobj;
         console.log(this.imageObjectCollection);
@@ -180,7 +180,9 @@ var ImageGridComponent = (function () {
                 image: img,
                 width: 0,
                 height: 0,
-                exists: false
+                exists: true,
+                status: 'loading',
+                includedInZip: true
             });
         });
     };

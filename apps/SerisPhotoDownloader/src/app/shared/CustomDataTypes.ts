@@ -9,5 +9,7 @@ export interface ImageObjectElement{
     path:string,
     width:number,
     height:number,
-    exists:boolean
+    exists:boolean,
+    status:string,
+    includedInZip:boolean
 }

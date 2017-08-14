@@ -29,14 +29,15 @@ export class ImageGridComponent implements OnInit {
 
       if(e.type==="error"){
           imobj.exists = false;
+          imobj.status = "error";
       }
 
       if(e.type==="load"){
         imobj.exists = true;
         imobj.width =  imobj.image.width;
         imobj.height = imobj.image.height;
-        console.log('LOADED');
-        console.log(imobj);
+        imobj.status = "loaded";        
+        
       }
 
       this.imageObjectCollection[(<HTMLImageElement>e.currentTarget).getAttribute('data-index')] = imobj;
@@ -73,7 +74,9 @@ export class ImageGridComponent implements OnInit {
           image:img,
           width:0,
           height:0,
-          exists:false
+          exists:true,
+          status:'loading',
+          includedInZip:true
         });
     });
     

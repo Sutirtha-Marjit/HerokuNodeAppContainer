@@ -23,6 +23,21 @@
     opacity: 0;
 }
 
+.prop-board.error{
+    opacity: 0.5;
+}
+
+.prop-board.fixed{
+    opacity: 1;
+    background-color: rgba(0,0,0,0.9);
+    background-image: url('https://loading.io/spinners/wave/lg.wave-ball-preloader.gif') no-repeat;
+    background-position: center center;
+}
+
+.prop-board.fixed h4{
+    text-align: center;
+}
+
 .app-bg{
     background-image: url('https://hdwallsource.com/img/2014/9/free-blurry-wallpaper-35108-35912-hd-wallpapers.jpg');
     background-size: 100% 150%;
