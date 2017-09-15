@@ -1,0 +1,40 @@
+<div>
+  <nav class="navbar navbar-default">
+    <div class="navbar-header">
+      <a (click)="menuToggle()" id="menu-opener" class="navbar-brand open" style="cursor:pointer;">Menu</a>
+    </div>
+  </nav>
+  <app-image-grid></app-image-grid>
+</div>
+<div class="console no-margin open">
+  <form (ngSubmit)="onSubmit()"  class="form-horizontal" novalidate [formGroup]="formgrp">
+        <div class="form-group col-sm-12">
+              <label style="text-align:left" for="" class="col-sm-12 control-label">Path segments</label>
+        </div>
+        
+        <div class="form-group col-sm-12">          
+            <div class="checkbox" style="margin-left:20px;">
+              <label><input formControlName="zeroPattern" type="checkbox"> Starting with zero pattern</label>            
+          </div>
+        </div>
+        <div class="col-sm-2"><input formControlName="rangeStart"   type="number" class="form-control"  placeholder="Range Start"/></div>
+        <div class="col-sm-2"><input formControlName="rangeEnd"   type="number" class="form-control"  placeholder="Range End"/></div>
+        
+        <div style="clear:both; margin-top:10px;"></div>
+        <div class="col-sm-8">
+            <input formControlName="pPath"   type="text" class="form-control"  placeholder="Primary path"/>
+        </div>   
+        
+        <div class="col-sm-4">
+            <input formControlName="sPath"  type="text" class="form-control" placeholder="Secondary path">
+        </div>
+       
+        <div class="col-sm-2" style="margin-top:20px;">
+          <input type="submit" class="form-control btn btn-success" id="actionBtn" value="Start Process"/>
+        </div>
+        <div class="col-sm-2" style="margin-top:20px;">
+          <input type="reset" class="form-control btn btn-default" id="actionBtn" value="Clean"/>
+        </div>
+  </form>
+  <div style="clear:both;"></div>
+</div>
