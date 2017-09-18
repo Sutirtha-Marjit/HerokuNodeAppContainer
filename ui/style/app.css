@@ -1,0 +1,156 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+a{
+    text-decoration: none;
+
+}
+
+.hide{
+    display: none;
+}
+*{
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+.app-bg-shade{
+    padding: 0px 55px 0px 55px;
+    background-color:#000;
+    
+    background-position: center top;
+    background-size: 100% auto;    
+    background-repeat: no-repeat;    
+    margin: 0px;
+    width: 100%;
+    height: 100%;    
+    text-align: center;
+    opacity: 0;
+    transform:rotateX(20deg);
+    transition: all 0.5s ease-in-out;
+}
+
+.complete{
+    opacity: 1;
+    transform:rotateX(0deg) rotateZ(0deg);
+}
+
+.complete .logo-container{
+    transition: all 1s ease-in-out;
+    transform: translateY(0px);
+}
+
+.perspective-wrap{
+    background: black;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    top:0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.short-desc{
+    font-size: 0.74rem;
+}
+.main-content-area{
+    margin: 0 auto;
+    width:65%;
+}
+
+.app-bg-shade *{
+color:rgba(255,255,255,0.8);
+}
+
+.divide{
+    width: 50%;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+}
+p{
+    font-size: 0.87rem;
+    line-height: 20px;
+}
+
+.app-card{
+    width:31%;
+    margin: 10px;
+    float: left;
+    padding: 0.5rem 0.7rem 0.99rem;
+    background: rgba(0,0,0,0.6);
+    border-radius: 5px;
+    opacity: 0;
+}
+
+.complete .app-card{
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+a.action-btn{
+    transition: all 1s ease-in-out;
+    border:solid 1px rgba(255,255,255,0.9);
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-top:20px;
+    display: inline-block;    
+}
+
+a.action-btn:hover{
+ background: rgba(255,255,255,0.8);
+ color:#222;
+}
+
+.logo-container{
+    width: 130px;
+    transform: translateY(-200px);
+    margin: 0 auto;
+}
+
+.logo-container img{
+    width: 100%;
+}
+
+@media screen and (max-width:1024px){
+    .app-bg-shade{        
+        background-size: auto 100%;
+    }
+
+    .app-card{        
+        width:100%;
+    }
+
+}
+
+.preloader{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    background: url('../images/preloader.gif') center center no-repeat;
+}
+
+
+
+@media screen and (max-width:768px){
+    .app-bg-shade{
+      padding: 0px;
+      margin: 0px;  
+    }
+    .app-card{        
+        width:100%;
+        margin: 0px;
+        border-top: 1px solid rgba(255,255,255,0.3);
+        background: rgba(0,0,0,0.75)
+    }
+
+    .logo-container{
+        width: 70px;
+        margin: 0 auto;
+    }
+}
