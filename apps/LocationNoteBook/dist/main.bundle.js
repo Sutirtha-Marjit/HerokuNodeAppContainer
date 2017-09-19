@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-login-screen>  \n</app-login-screen>\n  "
+module.exports = "<div>\n</div>\n\n<app-login-screen>  \n</app-login-screen>\n  "
 
 /***/ }),
 
@@ -48,6 +48,7 @@ module.exports = "<app-login-screen>  \n</app-login-screen>\n  "
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__ = __webpack_require__("../../../../../src/app/services/app-properties.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,11 +59,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'app';
     }
+    AppComponent.prototype.setGoogleMetaData = function () {
+        var googleMetaTag;
+        if (document.querySelectorAll('meta[name="google-signin-client_id"]').length === 0) {
+            googleMetaTag = document.createElement('meta');
+            googleMetaTag.setAttribute('name', 'google-signin-client_id');
+            googleMetaTag.setAttribute('content', __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants()["google-signin-client_id"]);
+            document.head.appendChild(googleMetaTag);
+        }
+    };
     AppComponent.prototype.ngOnInit = function () {
+        this.setGoogleMetaData();
     };
     return AppComponent;
 }());
@@ -142,7 +153,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/comps/login-screen/login-screen.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"login-screen\">\n  <div *ngIf=\"!signin\">\n    <div class=\"login-wrap\">  \n      <h1 class=\"BrandHOne1\">Location NoteBook</h1>\n      <div class=\"g-signin2\" data-onsuccess=\"onSignIn\"></div>   \n      <a href=\"#\" onclick=\"signOut();\">Sign out</a>   \n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"login-screen\">\n  <div *ngIf=\"!signin\">\n    <div class=\"login-wrap\">  \n      <h1 class=\"BrandHOne1\">Location NoteBook</h1>\n      <div class=\"g-signin2\" data-onsuccess=\"onSignIn\"></div>\n      <br/>   \n      <div><a class=\"btn btn-block btn-primary\" href=\"#\" onclick=\"signOut();\">Sign out</a></div>   \n      <br/>\n      <div><a class=\"btn btn-block btn-info\" href=\"#\">Start Journey</a></div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -167,14 +178,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var LoginScreenComponent = (function () {
     function LoginScreenComponent() {
         this.signin = false;
-        this.action = "Login test";
+        this.GAPI = {};
         this.signin = (window["GOOGLE-AUTH-STATUS"] === __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants().signin);
     }
+    LoginScreenComponent.prototype.createGoogleScript = function () {
+        var _this = this;
+        this.GAPI = window['gapi'];
+        var jstag, scripts = document.querySelectorAll('[data-dyn-script="location-note-book"]');
+        if (!scripts.length && !this.GAPI) {
+            jstag = document.createElement('script');
+            jstag.setAttribute('data-dyn-script', 'location-note-book');
+            document.body.appendChild(jstag);
+            jstag.src = __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants().jsPath;
+            setTimeout(function () {
+                _this.GAPI = window['gapi'];
+                var dx = _this.GAPI.auth2.init({
+                    client_id: __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants()['google-signin-client_id']
+                });
+                console.log(dx.isSignedIn);
+            }, __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants().standardAPIDelay);
+        }
+        else {
+            alert('available');
+        }
+    };
     LoginScreenComponent.prototype.ngOnInit = function () {
-        var base = this;
-        window["SigninAction"] = function () {
-            alert(base.action);
-        };
+        this.createGoogleScript();
     };
     return LoginScreenComponent;
 }());
@@ -212,8 +241,11 @@ var AppPropertiesService = (function () {
     }
     AppPropertiesService.AuthConstants = function () {
         return {
+            standardAPIDelay: 2500,
             signin: 'SIGNEDIN',
-            signout: 'SIGNEDOUT'
+            signout: 'SIGNEDOUT',
+            jsPath: 'https://apis.google.com/js/platform.js',
+            'google-signin-client_id': "1056442085004-uhaouf70lsue1q9meanbd247bfiaqloh.apps.googleusercontent.com"
         };
     };
     return AppPropertiesService;

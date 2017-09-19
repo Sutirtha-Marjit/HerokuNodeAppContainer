@@ -1,5 +1,5 @@
 /*https://i.pinimg.com/originals/85/b3/31/85b3314cd32bc6f3bd59f21e9dbec0d0.jpg*/
-@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Dosis|Pacifico|Lobster');
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 .login-screen{
    
@@ -22,6 +22,7 @@
    padding: 30px;
    background: rgba(0,0,0,0.4);
    border-radius:10px;
+   transition: all 0.2s ease-in-out;
 }
 
 .BrandHOne1{
@@ -35,6 +36,14 @@
     box-shadow: none;
 }
 
-.g-signin2>div .abcRioButtonContentWrapper{
-     
+@media screen and (max-width: 750px){
+    .login-wrap{
+    width:100%;
+    height:100%; 
+    margin:0px;
+    text-align: center;
+    padding: 30px;
+    background: rgba(0,0,0,0.7);
+    border-radius:10px;
+    }
 }

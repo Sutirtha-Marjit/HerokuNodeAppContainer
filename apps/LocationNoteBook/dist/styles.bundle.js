@@ -32,11 +32,11 @@ if(false) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
 // imports
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Lobster);", ""]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Dosis|Pacifico|Lobster);", ""]);
 exports.push([module.i, "@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css);", ""]);
 
 // module
-exports.push([module.i, "/*https://i.pinimg.com/originals/85/b3/31/85b3314cd32bc6f3bd59f21e9dbec0d0.jpg*/\n.login-screen{\n   \n}\n\n.login-screen>div{\n  position:absolute;\n   top:0px;\n   left:0px;\n   width: 100%;\n   height: 100%;\n   background: url('https://i.pinimg.com/originals/85/b3/31/85b3314cd32bc6f3bd59f21e9dbec0d0.jpg');  \n   background-color:#296b5c;\n}\n\n.login-wrap{\n    width:430px;\n    margin:10% auto;\n    text-align: center;\n   padding: 30px;\n   background: rgba(0,0,0,0.4);\n   border-radius:10px;\n}\n\n.BrandHOne1{\n    font-family: 'Lobster';\n    color:white;\n}\n\n.g-signin2>div{\n    margin: 0 auto;\n    border-radius:20px;\n    box-shadow: none;\n}\n\n.g-signin2>div .abcRioButtonContentWrapper{\n     \n}", ""]);
+exports.push([module.i, "/*https://i.pinimg.com/originals/85/b3/31/85b3314cd32bc6f3bd59f21e9dbec0d0.jpg*/\n.login-screen{\n   \n}\n\n.login-screen>div{\n  position:absolute;\n   top:0px;\n   left:0px;\n   width: 100%;\n   height: 100%;\n   background: url('https://i.pinimg.com/originals/85/b3/31/85b3314cd32bc6f3bd59f21e9dbec0d0.jpg');  \n   background-color:#296b5c;\n}\n\n.login-wrap{\n    width:430px;\n    margin:10% auto;\n    text-align: center;\n   padding: 30px;\n   background: rgba(0,0,0,0.4);\n   border-radius:10px;\n   transition: all 0.2s ease-in-out;\n}\n\n.BrandHOne1{\n    font-family: 'Lobster';\n    color:white;\n}\n\n.g-signin2>div{\n    margin: 0 auto;\n    border-radius:20px;\n    box-shadow: none;\n}\n\n@media screen and (max-width: 750px){\n    .login-wrap{\n    width:100%;\n    height:100%; \n    margin:0px;\n    text-align: center;\n    padding: 30px;\n    background: rgba(0,0,0,0.7);\n    border-radius:10px;\n    }\n}", ""]);
 
 // exports
 
