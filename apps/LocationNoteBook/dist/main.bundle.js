@@ -153,7 +153,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/comps/login-screen/login-screen.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"login-screen\">\n  <div *ngIf=\"!signin\">\n    <div class=\"login-wrap\">  \n      <h1 class=\"BrandHOne1\">Location NoteBook</h1>\n      <div class=\"g-signin2\" data-onsuccess=\"onSignIn\"></div>\n      <br/>   \n      <div><a class=\"btn btn-block btn-primary\" href=\"#\" onclick=\"signOut();\">Sign out</a></div>   \n      <br/>\n      <div><a class=\"btn btn-block btn-info\" href=\"#\">Start Journey</a></div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"login-screen {{loginAppearClass}}\">\n  \n  <div>\n   <span class=\"WText\">{{signin}}</span>\n    <div class=\"login-wrap\">  \n      <h1 class=\"BrandHOne1\">Location NoteBook</h1>\n      \n      <div id=\"signinPanel\" class=\"{{googleSignPanelClass}}\">\n        <h4 class=\"WText\">Check it!</h4>\n        <p class=\"small WText\">Please check whether Popup Blocker is deactiavted in the browser or not. Google Signin required Popups, so activation of Popup Blocker may stop the functioning. Please check before signin the application.</p>\n        <br/>\n        <div class=\"g-signin2\" data-onsuccess=\"onSignIn\"></div>   \n      </div>\n\n        \n        <div id=\"okPanel\" *ngIf=\"signin\">\n          <h3 class=\"WText\">Oh! Great!</h3>\n          <div class=\"profile-image-container\">\n            <img src=\"{{googleProfile.image}}\"/>\n          </div>\n          <br/>\n          <p class=\"small WText\">So you are signed in as {{googleProfile.name}} with emial <a href=\"mailto:{{googleProfile.email}}\">{{googleProfile.email}}</a>. Please start your journey by clicking the following button. Hope you will enjoy.</p>\n          <div class=\"btn-group\">\n          <a class=\"btn btn-success\" href=\"#\">Start Journey</a>\n          <a class=\"btn btn-info\"  href=\"\" (click)=\"onGooogleSignOut()\">Sign out</a>\n          </div>\n        </div>\n        \n      \n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -177,10 +177,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var LoginScreenComponent = (function () {
     function LoginScreenComponent() {
+        this.googleSignPanelClass = "signin-panel";
+        this.loginAppearClass = "";
         this.signin = false;
+        this.decided = false;
+        this.googleProfile = { name: '', id: '', image: '', email: '' };
         this.GAPI = {};
         this.signin = (window["GOOGLE-AUTH-STATUS"] === __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants().signin);
     }
+    LoginScreenComponent.prototype.onGooogleSignOut = function () {
+        var _this = this;
+        var RawAuthObj = this.GAPI.auth2.getAuthInstance();
+        RawAuthObj.signOut().then(function () {
+            _this.googleSignPanelClass = "signin-panel";
+            _this.signin = false;
+        });
+    };
+    LoginScreenComponent.prototype.onGoogleSignIn = function (googleUser) {
+        var RawGoogleProfile = googleUser.getBasicProfile();
+        this.googleProfile.name = RawGoogleProfile.getName();
+        this.googleProfile.id = RawGoogleProfile.getId();
+        this.googleProfile.image = RawGoogleProfile.getImageUrl();
+        this.googleProfile.email = RawGoogleProfile.getEmail();
+        this.signin = true;
+        this.googleSignPanelClass = "hide signin-panel";
+    };
     LoginScreenComponent.prototype.createGoogleScript = function () {
         var _this = this;
         this.GAPI = window['gapi'];
@@ -192,10 +213,10 @@ var LoginScreenComponent = (function () {
             jstag.src = __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants().jsPath;
             setTimeout(function () {
                 _this.GAPI = window['gapi'];
-                var dx = _this.GAPI.auth2.init({
+                _this.GAPI.auth2.init({
                     client_id: __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants()['google-signin-client_id']
                 });
-                console.log(dx.isSignedIn);
+                _this.loginAppearClass = "appear";
             }, __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants().standardAPIDelay);
         }
         else {
@@ -203,7 +224,13 @@ var LoginScreenComponent = (function () {
         }
     };
     LoginScreenComponent.prototype.ngOnInit = function () {
-        this.createGoogleScript();
+        var base = this;
+        base.createGoogleScript();
+        if (!window["onSignIn"]) {
+            window["onSignIn"] = function (user) {
+                base.onGoogleSignIn(user);
+            };
+        }
     };
     return LoginScreenComponent;
 }());
