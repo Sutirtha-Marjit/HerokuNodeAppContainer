@@ -1,6 +1,11 @@
 /*https://i.pinimg.com/originals/85/b3/31/85b3314cd32bc6f3bd59f21e9dbec0d0.jpg*/
 @import url('https://fonts.googleapis.com/css?family=Dosis|Pacifico|Lobster');
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+
+.WText{
+    color:white;
+}
+
 .login-screen{
    
 }
