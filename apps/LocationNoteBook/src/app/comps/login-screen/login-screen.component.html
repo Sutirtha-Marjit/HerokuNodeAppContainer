@@ -1,27 +1,30 @@
 <div class="login-screen {{loginAppearClass}}">
   
   <div>
-   <span class="WText">signin</span>
+   <span class="WText">{{eventFromSigninButton}}</span>
     <div class="login-wrap">  
       <h1 class="BrandHOne1">Location NoteBook</h1>
       
       <div id="signinPanel" class="{{googleSignPanelClass}}">
+        <br/>
         <h4 class="WText">Check it!</h4>
         <p class="small WText">Please check whether Popup Blocker is deactiavted in the browser or not. Google Signin required Popups, so activation of Popup Blocker may stop the functioning. Please check before signin the application.</p>
         <br/>
-        <div class="g-signin2" data-theme="dark" data-onsuccess="onSignInSuccess"></div>   
+        <hr style="opacity:0.2;"/>
+        <div class="g-signin2" data-ux-mode="redirect" data-theme="dark" data-onsuccess="onSignInSuccess"></div>   
+        
       </div>
    <!--data-onsuccess="onSignIn" -->
    <!--data-callback="onSignIn" -->
    <!--  -->        
         <div id="okPanel" *ngIf="signin">
-          <h3 class="WText">Oh! Great!</h3>
+          <h4 class="WText">Welcome {{googleProfile.name}}!</h4>
           
           <div class="profile-image-container">
             <img src="{{googleProfile.image}}"/>
           </div>
           <br/>
-          <p class="small WText">So you are signed in as {{googleProfile.name}} with emial <a href="mailto:{{googleProfile.email}}">{{googleProfile.email}}</a>. Please start your journey by clicking the following button. Hope you will enjoy.</p>
+          <p class="small WText">So you are signed in as {{googleProfile.name}} with email <a href="mailto:{{googleProfile.email}}">{{googleProfile.email}}</a>. Please start your journey by clicking the following button. Hope you will enjoy.</p>
           <div class="btn-group">
           <a class="btn btn-success" href="#">Start Journey</a>
           <a class="btn btn-info"  href="" (click)="onGooogleSignOut()">Sign out</a>

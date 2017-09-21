@@ -38,13 +38,17 @@ export class LoginScreenComponent implements OnInit {
      console.log('onGoogleSignIn');
      this.signin = true;
      console.log('this.signin:'+this.signin);
+     if(this.eventFromSigninButton){
+       window.location.reload();
+     }
      
      
    }
    
    private createGoogleScript(){
+     var base = this;
       this.GAPI = window['gapi'];
-        var jstag,scripts = document.querySelectorAll('[data-dyn-script="location-note-book"]');
+        var GoogleAuthObject,jstag,scripts = document.querySelectorAll('[data-dyn-script="location-note-book"]');
         if(!scripts.length && !this.GAPI){
            
           jstag = document.createElement('script');
@@ -52,11 +56,16 @@ export class LoginScreenComponent implements OnInit {
           document.body.appendChild(jstag);
           jstag.src = AppPropertiesService.AuthConstants().jsPath;
             setTimeout(()=>{
-              this.GAPI = window['gapi'];
               
-              this.GAPI.auth2.init({
-                client_id:AppPropertiesService.AuthConstants()['google-signin-client_id']
-              });
+              this.GAPI = window['gapi'];
+              GoogleAuthObject = this.GAPI.auth2.init();
+              GoogleAuthObject.then(()=>{
+                var btn = document.querySelector('*[class *="RioButtonContentWrapper"]');
+                btn.addEventListener('click',()=>{
+                 base.eventFromSigninButton = true; 
+                })
+              })
+              
               
               this.loginAppearClass = "appear";
               
@@ -81,10 +90,7 @@ export class LoginScreenComponent implements OnInit {
            base.onGoogleSignInSuccess(user);
          };
 
-         window["onSignIn"] = function(){
-           base.eventFromSigninButton = true;
-           alert('ok');
-         };
+         
 
          
 
