@@ -1,7 +1,7 @@
 <div class="login-screen {{loginAppearClass}}">
   
   <div>
-   <span class="WText">{{signin}}</span>
+   <span class="WText">signin</span>
     <div class="login-wrap">  
       <h1 class="BrandHOne1">Location NoteBook</h1>
       
@@ -9,12 +9,14 @@
         <h4 class="WText">Check it!</h4>
         <p class="small WText">Please check whether Popup Blocker is deactiavted in the browser or not. Google Signin required Popups, so activation of Popup Blocker may stop the functioning. Please check before signin the application.</p>
         <br/>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>   
+        <div class="g-signin2" data-theme="dark" data-onsuccess="onSignInSuccess"></div>   
       </div>
-
-        
+   <!--data-onsuccess="onSignIn" -->
+   <!--data-callback="onSignIn" -->
+   <!--  -->        
         <div id="okPanel" *ngIf="signin">
           <h3 class="WText">Oh! Great!</h3>
+          
           <div class="profile-image-container">
             <img src="{{googleProfile.image}}"/>
           </div>
@@ -27,6 +29,9 @@
         </div>
         
       
+    </div>
+    <div class="login-preloader-container">
+        <app-common-preloader></app-common-preloader>
     </div>
   </div>
 </div>

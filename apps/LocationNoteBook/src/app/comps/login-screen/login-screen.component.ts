@@ -10,6 +10,7 @@ import { GoogleProfile} from '../../shared/datatypes';
 export class LoginScreenComponent implements OnInit {
   googleSignPanelClass:string = "signin-panel";
   loginAppearClass:string = "";
+  eventFromSigninButton:boolean = false;
   signin:boolean = false;
   decided:boolean = false;
   googleProfile:GoogleProfile = { name:'', id:'', image:'', email:'' };
@@ -26,16 +27,19 @@ export class LoginScreenComponent implements OnInit {
      });
    }
 
-   private onGoogleSignIn(googleUser:any){
+   private onGoogleSignInSuccess(googleUser:any){
      
      var RawGoogleProfile = googleUser.getBasicProfile();     
      this.googleProfile.name = RawGoogleProfile.getName();
      this.googleProfile.id = RawGoogleProfile.getId();
      this.googleProfile.image = RawGoogleProfile.getImageUrl();
      this.googleProfile.email = RawGoogleProfile.getEmail();
-     this.signin = true;
      this.googleSignPanelClass = "hide signin-panel";
-
+     console.log('onGoogleSignIn');
+     this.signin = true;
+     console.log('this.signin:'+this.signin);
+     
+     
    }
    
    private createGoogleScript(){
@@ -70,11 +74,16 @@ export class LoginScreenComponent implements OnInit {
   ngOnInit() {
     var base = this;
     base.createGoogleScript();
+      console.log('LoginScreen-init');
+      if(!window["onSignInSuccess"]){
+         
+         window["onSignInSuccess"] = function(user:any){
+           base.onGoogleSignInSuccess(user);
+         };
 
-      if(!window["onSignIn"]){
-
-         window["onSignIn"] = function(user:any){
-           base.onGoogleSignIn(user);
+         window["onSignIn"] = function(){
+           base.eventFromSigninButton = true;
+           alert('ok');
          };
 
          

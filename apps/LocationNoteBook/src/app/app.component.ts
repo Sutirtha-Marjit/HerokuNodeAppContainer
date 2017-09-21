@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppPropertiesService } from './services/app-properties.service';
+import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-root',
