@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<app-login-screen>  \n</app-login-screen>\n  "
+module.exports = "\n<div>\n    <app-login-screen (loginSuccess)=\"onLoginSuccess($event)\">  \n    </app-login-screen>\n</div>"
 
 /***/ }),
 
@@ -62,7 +62,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppComponent = (function () {
     function AppComponent() {
+        this.CurrentUserProfile = null;
     }
+    AppComponent.prototype.onLoginSuccess = function (gp) {
+        console.log('in app component');
+        console.log(gp);
+        this.CurrentUserProfile = gp;
+    };
     AppComponent.prototype.setGoogleMetaData = function () {
         var googleMetaTag;
         if (document.querySelectorAll('meta[name="google-signin-client_id"]').length === 0) {
@@ -143,7 +149,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "\r\n.common-preloader{\r\n  display: block;\r\n  width:120px;\r\n  height:20px;\r\n  margin:0 auto;\r\n}\r\n\r\n.common-preloader .circle-conatiner{\r\n  width: 22px;\r\n  height: 22px;\r\n  display: inline-block;\r\n  -webkit-animation-name:common-preloader-animation;\r\n          animation-name:common-preloader-animation;\r\n  animation-duration: 2s; \r\n  -webkit-animation-delay: 1s; \r\n          animation-delay: 1s;\r\n  animation-iteration-count:infinite;\r\n  -webkit-animation-name:example;\r\n  -webkit-animation-duration: 2s; \r\n  -webkit-animation-delay: 0s;\r\n  -webkit-animation-iteration-count:infinite;\r\n}\r\n\r\n.common-preloader .circle-conatiner.n2{\r\n  animation-delay: .5s;\r\n  -webkit-animation-delay: .5s;\r\n}\r\n\r\n.common-preloader .circle-conatiner.n3{\r\n  animation-delay: 1s;\r\n  -webkit-animation-delay: 1s;\r\n}\r\n\r\n.common-preloader .circle-conatiner.n4{\r\n  animation-delay: 1.5s;\r\n  -webkit-animation-delay: 1.5s;\r\n}\r\n\r\n.common-preloader .circle-conatiner svg{\r\n  width:22px;\r\n  height:22px;\r\n}\r\n\r\n.common-preloader .circle-conatiner svg circle{\r\n  fill:rgba(255,255,255,0.9);\r\n  stroke:rgba(0,0,0,0);\r\n  stroke-width:2px; \r\n  cx:11;\r\n  cy:11;\r\n  r:10;\r\n}\r\n\r\n\r\n/* Safari 4.0 - 8.0 */\r\n@-webkit-keyframes example {\r\n    0% {-webkit-transform:translateY(0px) scale(1);transform:translateY(0px) scale(1);}\r\n    50% {-webkit-transform:translateY(30px) scale(0.9);transform:translateY(30px) scale(0.9);}\r\n    100% {-webkit-transform:translateY(0px) scale(1);transform:translateY(0px) scale(1);}\r\n}\r\n\r\n/* Standard syntax */\r\n@keyframes example {\r\n    0% {-webkit-transform:translateY(0px) scale(1);transform:translateY(0px) scale(1);}\r\n    50% {-webkit-transform:translateY(30px) scale(0.9);transform:translateY(30px) scale(0.9);}\r\n    100% {-webkit-transform:translateY(0px) scale(1);transform:translateY(0px) scale(1);}\r\n}", ""]);
+exports.push([module.i, "\r\n.common-preloader{\r\n  display: block;\r\n  width:120px;\r\n  height:20px;\r\n  margin:0 auto;\r\n}\r\n\r\n.common-preloader .circle-conatiner{\r\n  width: 22px;\r\n  height: 22px;\r\n  display: inline-block;\r\n  -webkit-animation-name:common-preloader-animation;\r\n          animation-name:common-preloader-animation;\r\n  animation-duration: 2s; \r\n  -webkit-animation-delay: 1s; \r\n          animation-delay: 1s;\r\n  animation-iteration-count:infinite;\r\n  -webkit-animation-name:example;\r\n  -webkit-animation-duration: 2s; \r\n  -webkit-animation-delay: 0s;\r\n  -webkit-animation-iteration-count:infinite;\r\n}\r\n\r\n.common-preloader .circle-conatiner.n2{\r\n  animation-delay: .5s;\r\n  -webkit-animation-delay: .5s;\r\n}\r\n\r\n.common-preloader .circle-conatiner.n3{\r\n  animation-delay: 1s;\r\n  -webkit-animation-delay: 1s;\r\n}\r\n\r\n.common-preloader .circle-conatiner.n4{\r\n  animation-delay: 1.5s;\r\n  -webkit-animation-delay: 1.5s;\r\n}\r\n\r\n.common-preloader .circle-conatiner svg{\r\n  width:22px;\r\n  height:22px;\r\n}\r\n\r\n.common-preloader .circle-conatiner svg circle{\r\n  fill:rgba(255,255,255,0.9);\r\n  stroke:rgba(0,0,0,0);\r\n  stroke-width:2px; \r\n  cx:11;\r\n  cy:11;\r\n  r:10;\r\n}\r\n\r\n\r\n.count-down-preloader{\r\n  width:80px;\r\n  padding: 10px;\r\n  border-radius:10px;\r\n  background: rgba(0,0,0,0.5); \r\n  margin: 5px auto;\r\n}\r\n\r\n.count-down-preloader span{\r\ndisplay: block;\r\n}\r\n\r\n.count-down-preloader span.digit{\r\n color:white;\r\n font-size:20px; \r\n}\r\n\r\n/* Safari 4.0 - 8.0 */\r\n@-webkit-keyframes example {\r\n    0% {-webkit-transform:translateY(0px) scale(1);transform:translateY(0px) scale(1);}\r\n    50% {-webkit-transform:translateY(30px) scale(0.9);transform:translateY(30px) scale(0.9);}\r\n    100% {-webkit-transform:translateY(0px) scale(1);transform:translateY(0px) scale(1);}\r\n}\r\n\r\n/* Standard syntax */\r\n@keyframes example {\r\n    0% {-webkit-transform:translateY(0px) scale(1);transform:translateY(0px) scale(1);}\r\n    50% {-webkit-transform:translateY(30px) scale(0.9);transform:translateY(30px) scale(0.9);}\r\n    100% {-webkit-transform:translateY(0px) scale(1);transform:translateY(0px) scale(1);}\r\n}", ""]);
 
 // exports
 
@@ -156,7 +162,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/comps/common-preloader/common-preloader.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"common-preloader\">\n      <div class=\"circle-conatiner n1\">\n          <svg><circle /></svg>    \n      </div>\n      <div class=\"circle-conatiner n2\">\n          <svg><circle /></svg>    \n      </div>\n      <div class=\"circle-conatiner n3\">\n          <svg><circle /></svg>    \n      </div>\n      <div class=\"circle-conatiner n4\">\n          <svg><circle /></svg>    \n      </div>\n    </div>\n    "
+module.exports = "<section *ngIf=\"preloaderType==='loading'\">\n<div class=\"common-preloader\">\n      <div class=\"circle-conatiner n1\">\n          <svg><circle /></svg>    \n      </div>\n      <div class=\"circle-conatiner n2\">\n          <svg><circle /></svg>    \n      </div>\n      <div class=\"circle-conatiner n3\">\n          <svg><circle /></svg>    \n      </div>\n      <div class=\"circle-conatiner n4\">\n          <svg><circle /></svg>    \n      </div>\n    </div>\n</section>\n\n<section *ngIf=\"preloaderType==='countdown'\">\n    <div class=\"count-down-preloader\">\n        <span class=\"digit\">{{countOfCountDown}}</span>\n        <span class=\"small WText\">seconds</span>\n    </div>    \n</section>\n    "
 
 /***/ }),
 
@@ -165,67 +171,6 @@ module.exports = "<div class=\"common-preloader\">\n      <div class=\"circle-co
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommonPreloaderComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var CommonPreloaderComponent = (function () {
-    function CommonPreloaderComponent() {
-    }
-    CommonPreloaderComponent.prototype.ngOnInit = function () {
-    };
-    return CommonPreloaderComponent;
-}());
-CommonPreloaderComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'app-common-preloader',
-        template: __webpack_require__("../../../../../src/app/comps/common-preloader/common-preloader.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/comps/common-preloader/common-preloader.component.css")]
-    }),
-    __metadata("design:paramtypes", [])
-], CommonPreloaderComponent);
-
-//# sourceMappingURL=common-preloader.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/comps/login-screen/login-screen.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/comps/login-screen/login-screen.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"login-screen {{loginAppearClass}}\">\n  \n  <div>\n   <span class=\"WText\">signin</span>\n    <div class=\"login-wrap\">  \n      <h1 class=\"BrandHOne1\">Location NoteBook</h1>\n      \n      <div id=\"signinPanel\" class=\"{{googleSignPanelClass}}\">\n        <h4 class=\"WText\">Check it!</h4>\n        <p class=\"small WText\">Please check whether Popup Blocker is deactiavted in the browser or not. Google Signin required Popups, so activation of Popup Blocker may stop the functioning. Please check before signin the application.</p>\n        <br/>\n        <div class=\"g-signin2\" data-theme=\"dark\" data-onsuccess=\"onSignInSuccess\"></div>   \n      </div>\n   <!--data-onsuccess=\"onSignIn\" -->\n   <!--data-callback=\"onSignIn\" -->\n   <!--  -->        \n        <div id=\"okPanel\" *ngIf=\"signin\">\n          <h3 class=\"WText\">Oh! Great!</h3>\n          \n          <div class=\"profile-image-container\">\n            <img src=\"{{googleProfile.image}}\"/>\n          </div>\n          <br/>\n          <p class=\"small WText\">So you are signed in as {{googleProfile.name}} with emial <a href=\"mailto:{{googleProfile.email}}\">{{googleProfile.email}}</a>. Please start your journey by clicking the following button. Hope you will enjoy.</p>\n          <div class=\"btn-group\">\n          <a class=\"btn btn-success\" href=\"#\">Start Journey</a>\n          <a class=\"btn btn-info\"  href=\"\" (click)=\"onGooogleSignOut()\">Sign out</a>\n          </div>\n        </div>\n        \n      \n    </div>\n    <div class=\"login-preloader-container\">\n        <app-common-preloader></app-common-preloader>\n    </div>\n  </div>\n</div>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/comps/login-screen/login-screen.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginScreenComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__ = __webpack_require__("../../../../../src/app/services/app-properties.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -239,8 +184,106 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+var CommonPreloaderComponent = (function () {
+    function CommonPreloaderComponent() {
+        this.countDownEnd = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.countDownCompReady = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.cntIntervalID = null;
+        this.countOfCountDown = 0;
+        this.maxCountDown = __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].getPreloaderConfig().maxPreloaderCountDown;
+    }
+    CommonPreloaderComponent.prototype.startCountDown = function () {
+        var _this = this;
+        this.cntIntervalID = setInterval(function () {
+            _this.countOfCountDown--;
+            if (_this.countOfCountDown === 0) {
+                _this.countDownEnd.emit('countDownEnd');
+                clearInterval(_this.cntIntervalID);
+            }
+        }, 1000);
+    };
+    CommonPreloaderComponent.prototype.ngOnInit = function () {
+        this.countOfCountDown = this.maxCountDown;
+        if (this.preloaderType === "countdown") {
+            this.countDownCompReady.emit({ desc: '', currentTarget: this });
+        }
+    };
+    return CommonPreloaderComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", String)
+], CommonPreloaderComponent.prototype, "preloaderType", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]) === "function" && _a || Object)
+], CommonPreloaderComponent.prototype, "countDownEnd", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]) === "function" && _b || Object)
+], CommonPreloaderComponent.prototype, "countDownCompReady", void 0);
+CommonPreloaderComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'app-common-preloader',
+        template: __webpack_require__("../../../../../src/app/comps/common-preloader/common-preloader.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/comps/common-preloader/common-preloader.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], CommonPreloaderComponent);
+
+var _a, _b;
+//# sourceMappingURL=common-preloader.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/comps/login-screen/login-screen.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".login-screen{\r\n   \r\n}\r\n\r\n.profile-image-container{\r\n    border-radius:560px;\r\n    overflow: hidden;\r\n    width: 100px;\r\n    height: 100px;\r\n    border:5px solid rgba(255,255,255,0.3);\r\n    margin:0 auto;\r\n}\r\n\r\n.profile-image-container img{\r\n    width: 100%;\r\n    height: auto;\r\n}\r\n\r\n.login-screen .login-wrap{\r\n    transition: all 0.2s ease-out;\r\n    -webkit-transform: translateY(-70%) scale(0.1);\r\n            transform: translateY(-70%) scale(0.1);\r\n    opacity: 0;\r\n}\r\n\r\n.login-screen.appear .login-wrap{\r\n    -webkit-transform: translateY(0%) scale(1);\r\n            transform: translateY(0%) scale(1);\r\n    opacity: 1;\r\n}\r\n\r\n.login-preloader-container{\r\n    position:absolute;\r\n    top:50%;\r\n    left:0px;\r\n    width: 100%;\r\n}\r\n\r\n.login-screen{\r\n  position:absolute;\r\n  top:0px;\r\n  left:0px;\r\n  width: 100%;  \r\n  min-height: 100%;\r\n}\r\n\r\n.login-screen .login-bg{\r\n  /*\r\n https://i.pinimg.com/originals/85/b3/31/85b3314cd32bc6f3bd59f21e9dbec0d0.jpg\r\n  https://ak7.picdn.net/shutterstock/videos/3865067/thumb/1.jpg*/  \r\n  background: url('https://i.pinimg.com/originals/85/b3/31/85b3314cd32bc6f3bd59f21e9dbec0d0.jpg') no-repeat;\r\n  background-blend-mode:multiply; \r\n  background-color:#296b5c;\r\n  background-size: 120% auto;\r\n  background-position: center center;\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100%;\r\n  -webkit-filter: blur(20px);\r\n          filter: blur(20px);\r\n  transition: all 3s ease-in-out;\r\n}\r\n\r\n.login-screen.appear .login-bg{\r\n-webkit-filter: blur(0px);\r\n        filter: blur(0px);\r\nbackground-size: 100% auto;\r\n}\r\n\r\n.login-screen.appear .login-preloader-container{\r\n display: none;\r\n}\r\n\r\n.login-screen>div{\r\n  \r\n}\r\n\r\n.login-wrap{\r\n    width:430px;\r\n    margin:10% auto;\r\n    text-align: center;\r\n   padding: 30px;\r\n   background: rgba(0,0,0,0.6);\r\n   border-radius:10px;\r\n   transition: all 0.2s ease-in-out;\r\n}\r\n\r\n\r\n\r\n@media screen and (max-width: 750px){\r\n    .login-wrap{\r\n    width:100%;\r\n    height:100%; \r\n    margin:0px;\r\n    text-align: center;\r\n    padding: 30px;\r\n    background: rgba(0,0,0,0.7);\r\n    border-radius:10px;\r\n    }\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/comps/login-screen/login-screen.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"login-screen {{loginAppearClass}}\">\n  <div class=\"login-bg\"></div>\n\n  <div>\n    <div class=\"login-wrap\">  \n      <h1 class=\"BrandHOne1\">Location NoteBook</h1>\n      \n      <div id=\"signinPanel\" class=\"{{googleSignPanelClass}}\">\n        <br/>\n        <h4 class=\"WText\">Check it!</h4>\n        <p class=\"small WText\">Please check whether Popup Blocker is deactiavted in the browser or not. Google Signin required Popups, so activation of Popup Blocker may stop the functioning. Please check before signin the application.</p>\n        <br/>\n        <hr style=\"opacity:0.2;\"/>\n        <div class=\"g-signin2\" data-ux-mode=\"redirect\" data-theme=\"dark\" data-onsuccess=\"onSignInSuccess\"></div>   \n        \n      </div>\n   <!--data-onsuccess=\"onSignIn\" -->\n   <!--data-callback=\"onSignIn\" -->\n   <!--  -->        \n        <div id=\"okPanel\" *ngIf=\"signin\">\n          <h4 class=\"WText\">Welcome {{googleProfile.name}}!</h4>\n          \n          <div class=\"profile-image-container\">\n            <img src=\"{{googleProfile.image}}\"/>\n          </div>\n          <app-common-preloader [preloaderType]=\"'countdown'\" (countDownEnd)=\"homeScreenKikOff($event)\"  (countDownCompReady)=\"onCountDownPreloaderReay($event)\"></app-common-preloader>\n          <br/>\n          <p class=\"small WText\">So you are signed in as {{googleProfile.name}} with email <a href=\"mailto:{{googleProfile.email}}\">{{googleProfile.email}}</a>. Please start your journey by clicking the following button. Hope you will enjoy.</p>\n          <div class=\"btn-group\">\n          <a class=\"btn btn-success\" href=\"#\">Start Journey</a>\n          <a class=\"btn btn-info\"  href=\"\" (click)=\"onGooogleSignOut()\">Sign out</a>\n          </div>\n        </div>\n        \n      \n    </div>\n    <div class=\"login-preloader-container\">\n        <app-common-preloader [preloaderType]=\"'loading'\"></app-common-preloader>\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/comps/login-screen/login-screen.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginScreenComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__ = __webpack_require__("../../../../../src/app/services/app-properties.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_preloader_common_preloader_component__ = __webpack_require__("../../../../../src/app/comps/common-preloader/common-preloader.component.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
 var LoginScreenComponent = (function () {
     function LoginScreenComponent() {
+        this.loginSuccess = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
         this.googleSignPanelClass = "signin-panel";
         this.loginAppearClass = "";
         this.eventFromSigninButton = false;
@@ -250,6 +293,12 @@ var LoginScreenComponent = (function () {
         this.GAPI = {};
         this.signin = (window["GOOGLE-AUTH-STATUS"] === __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants().signin);
     }
+    LoginScreenComponent.prototype.homeScreenKikOff = function (e) {
+        alert('kickoff');
+    };
+    LoginScreenComponent.prototype.onCountDownPreloaderReay = function (e) {
+        e.currentTarget.startCountDown();
+    };
     LoginScreenComponent.prototype.onGooogleSignOut = function () {
         var _this = this;
         var RawAuthObj = this.GAPI.auth2.getAuthInstance();
@@ -268,11 +317,20 @@ var LoginScreenComponent = (function () {
         console.log('onGoogleSignIn');
         this.signin = true;
         console.log('this.signin:' + this.signin);
+        if (this.eventFromSigninButton) {
+            window.location.reload();
+        }
+        else {
+            console.log('Emiting event "loginSuccess"');
+            this.loginSuccess.emit(this.googleProfile);
+            console.log(this.preloaders.toArray());
+        }
     };
     LoginScreenComponent.prototype.createGoogleScript = function () {
         var _this = this;
+        var base = this;
         this.GAPI = window['gapi'];
-        var jstag, scripts = document.querySelectorAll('[data-dyn-script="location-note-book"]');
+        var GoogleAuthObject, jstag, scripts = document.querySelectorAll('[data-dyn-script="location-note-book"]');
         if (!scripts.length && !this.GAPI) {
             jstag = document.createElement('script');
             jstag.setAttribute('data-dyn-script', 'location-note-book');
@@ -280,8 +338,12 @@ var LoginScreenComponent = (function () {
             jstag.src = __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants().jsPath;
             setTimeout(function () {
                 _this.GAPI = window['gapi'];
-                _this.GAPI.auth2.init({
-                    client_id: __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants()['google-signin-client_id']
+                GoogleAuthObject = _this.GAPI.auth2.init();
+                GoogleAuthObject.then(function () {
+                    var btn = document.querySelector('*[class *="RioButtonContentWrapper"]');
+                    btn.addEventListener('click', function () {
+                        base.eventFromSigninButton = true;
+                    });
                 });
                 _this.loginAppearClass = "appear";
             }, __WEBPACK_IMPORTED_MODULE_1__services_app_properties_service__["a" /* AppPropertiesService */].AuthConstants().standardAPIDelay);
@@ -298,14 +360,18 @@ var LoginScreenComponent = (function () {
             window["onSignInSuccess"] = function (user) {
                 base.onGoogleSignInSuccess(user);
             };
-            window["onSignIn"] = function () {
-                base.eventFromSigninButton = true;
-                alert('ok');
-            };
         }
     };
     return LoginScreenComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChildren */])(__WEBPACK_IMPORTED_MODULE_2__common_preloader_common_preloader_component__["a" /* CommonPreloaderComponent */]),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* QueryList */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* QueryList */]) === "function" && _a || Object)
+], LoginScreenComponent.prototype, "preloaders", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]) === "function" && _b || Object)
+], LoginScreenComponent.prototype, "loginSuccess", void 0);
 LoginScreenComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'app-login-screen',
@@ -315,6 +381,7 @@ LoginScreenComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], LoginScreenComponent);
 
+var _a, _b;
 //# sourceMappingURL=login-screen.component.js.map
 
 /***/ }),
@@ -344,7 +411,12 @@ var AppPropertiesService = (function () {
             signin: 'SIGNEDIN',
             signout: 'SIGNEDOUT',
             jsPath: 'https://apis.google.com/js/platform.js',
-            'google-signin-client_id': "1056442085004-uhaouf70lsue1q9meanbd247bfiaqloh.apps.googleusercontent.com"
+            'google-signin-client_id': "1056442085004-bpm9f77rfknv4f8i20te08uk2u0s3rcg.apps.googleusercontent.com"
+        };
+    };
+    AppPropertiesService.getPreloaderConfig = function () {
+        return {
+            maxPreloaderCountDown: 10
         };
     };
     AppPropertiesService.getRouteConfigObject = function () {

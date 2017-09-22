@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Output, EventEmitter, ViewChildren,QueryList} from '@angular/core';
 import { AppPropertiesService } from '../../services/app-properties.service';
-import { GoogleProfile} from '../../shared/datatypes';
+import { GoogleProfile,PreloaderInitEvent} from '../../shared/datatypes';
+import {CommonPreloaderComponent} from '../common-preloader/common-preloader.component';
 
 @Component({
   selector: 'app-login-screen',
@@ -8,15 +9,30 @@ import { GoogleProfile} from '../../shared/datatypes';
   styleUrls: ['./login-screen.component.css']
 })
 export class LoginScreenComponent implements OnInit {
+
+  @ViewChildren(CommonPreloaderComponent) preloaders:QueryList<CommonPreloaderComponent>;
+  @Output()loginSuccess:EventEmitter<GoogleProfile> = new EventEmitter<GoogleProfile>();
+
+  
   googleSignPanelClass:string = "signin-panel";
   loginAppearClass:string = "";
   eventFromSigninButton:boolean = false;
   signin:boolean = false;
   decided:boolean = false;
+  countdownPreloaderComp:CommonPreloaderComponent;
   googleProfile:GoogleProfile = { name:'', id:'', image:'', email:'' };
   GAPI:any = {};
+
   constructor() {
     this.signin = (window["GOOGLE-AUTH-STATUS"]===AppPropertiesService.AuthConstants().signin);
+   }
+
+   public homeScreenKikOff(e){
+     alert('kickoff');
+   }
+
+   public onCountDownPreloaderReay(e:PreloaderInitEvent){
+     e.currentTarget.startCountDown();
    }
 
    public onGooogleSignOut(){
@@ -40,6 +56,10 @@ export class LoginScreenComponent implements OnInit {
      console.log('this.signin:'+this.signin);
      if(this.eventFromSigninButton){
        window.location.reload();
+     }else{
+       console.log('Emiting event "loginSuccess"');
+       this.loginSuccess.emit(this.googleProfile);
+       console.log(this.preloaders.toArray());
      }
      
      
@@ -79,9 +99,11 @@ export class LoginScreenComponent implements OnInit {
       
    }
   
+  
 
   ngOnInit() {
     var base = this;
+    
     base.createGoogleScript();
       console.log('LoginScreen-init');
       if(!window["onSignInSuccess"]){

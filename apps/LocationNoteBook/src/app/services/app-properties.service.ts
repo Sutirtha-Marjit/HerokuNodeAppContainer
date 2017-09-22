@@ -11,7 +11,13 @@ export class AppPropertiesService {
       signin:'SIGNEDIN',
       signout:'SIGNEDOUT',
       jsPath:'https://apis.google.com/js/platform.js',
-      'google-signin-client_id':"1056442085004-uhaouf70lsue1q9meanbd247bfiaqloh.apps.googleusercontent.com"
+      'google-signin-client_id':"1056442085004-bpm9f77rfknv4f8i20te08uk2u0s3rcg.apps.googleusercontent.com"
+    };
+  }
+
+  public static getPreloaderConfig():any{
+    return {
+      maxPreloaderCountDown:10
     };
   }
 

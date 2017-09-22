@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { AppPropertiesService } from './services/app-properties.service';
 import { RouterModule, Routes } from '@angular/router';
+import { GoogleProfile} from './shared/datatypes';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,17 @@ import { RouterModule, Routes } from '@angular/router';
 })
 export class AppComponent {
   
+  public CurrentUserProfile:GoogleProfile = null;
+
   constructor(){
     
   } 
+
+  public onLoginSuccess(gp:GoogleProfile){
+    console.log('in app component');
+    console.log(gp);
+    this.CurrentUserProfile = gp;
+  }
 
   private setGoogleMetaData(){
     var googleMetaTag;

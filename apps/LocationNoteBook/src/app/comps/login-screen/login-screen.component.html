@@ -1,7 +1,7 @@
 <div class="login-screen {{loginAppearClass}}">
-  
+  <div class="login-bg"></div>
+
   <div>
-   <span class="WText">{{eventFromSigninButton}}</span>
     <div class="login-wrap">  
       <h1 class="BrandHOne1">Location NoteBook</h1>
       
@@ -23,6 +23,7 @@
           <div class="profile-image-container">
             <img src="{{googleProfile.image}}"/>
           </div>
+          <app-common-preloader [preloaderType]="'countdown'" (countDownEnd)="homeScreenKikOff($event)"  (countDownCompReady)="onCountDownPreloaderReay($event)"></app-common-preloader>
           <br/>
           <p class="small WText">So you are signed in as {{googleProfile.name}} with email <a href="mailto:{{googleProfile.email}}">{{googleProfile.email}}</a>. Please start your journey by clicking the following button. Hope you will enjoy.</p>
           <div class="btn-group">
@@ -34,7 +35,7 @@
       
     </div>
     <div class="login-preloader-container">
-        <app-common-preloader></app-common-preloader>
+        <app-common-preloader [preloaderType]="'loading'"></app-common-preloader>
     </div>
   </div>
 </div>

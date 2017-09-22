@@ -50,6 +50,23 @@
 }
 
 
+.count-down-preloader{
+  width:80px;
+  padding: 10px;
+  border-radius:10px;
+  background: rgba(0,0,0,0.5); 
+  margin: 5px auto;
+}
+
+.count-down-preloader span{
+display: block;
+}
+
+.count-down-preloader span.digit{
+ color:white;
+ font-size:20px; 
+}
+
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes example {
     0% {transform:translateY(0px) scale(1);}

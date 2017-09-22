@@ -1,3 +1,4 @@
+<section *ngIf="preloaderType==='loading'">
 <div class="common-preloader">
       <div class="circle-conatiner n1">
           <svg><circle /></svg>    
@@ -12,4 +13,12 @@
           <svg><circle /></svg>    
       </div>
     </div>
+</section>
+
+<section *ngIf="preloaderType==='countdown'">
+    <div class="count-down-preloader">
+        <span class="digit">{{countOfCountDown}}</span>
+        <span class="small WText">seconds</span>
+    </div>    
+</section>
     
