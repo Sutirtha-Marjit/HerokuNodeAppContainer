@@ -1,0 +1,22 @@
+.main-nav{
+    padding-bottom:20px;
+    border-bottom:#e6e6e6 solid 1px; 
+}
+
+.welcome-signature>*{
+float:right;
+}
+
+.welcome-signature .profile-image-container{
+    margin:10px 0px 0px 20px;
+}
+
+.welcome-signature .short-nav{
+    margin:20px 20px 0px 0px;
+    padding-top: 5px; 
+}
+
+.welcome-signature .short-nav a{
+  margin-left:10px;
+  color:#6c6c6c;
+}
