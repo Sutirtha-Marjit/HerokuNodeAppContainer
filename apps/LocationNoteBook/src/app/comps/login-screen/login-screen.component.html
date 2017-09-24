@@ -18,18 +18,24 @@
    <!--data-callback="onSignIn" -->
    <!--  -->        
         <div id="okPanel" *ngIf="signin">
-          <h4 class="WText">Welcome {{googleProfile.name}}!</h4>
+          <h4 class="WText">Welcome {{googleProfile.name}}!  &nbsp;&nbsp;<span class="small WText">|</span> <a class="btn btn-sm"  href="" (click)="onGooogleSignOut()">Sign out</a></h4>
           
           <div class="profile-image-container">
             <img src="{{googleProfile.image}}"/>
           </div>
-          <app-common-preloader [preloaderType]="'countdown'" (countDownEnd)="homeScreenKikOff($event)"  (countDownCompReady)="onCountDownPreloaderReay($event)"></app-common-preloader>
+          <br/>
+          
           <br/>
           <p class="small WText">So you are signed in as {{googleProfile.name}} with email <a href="mailto:{{googleProfile.email}}">{{googleProfile.email}}</a>. Please start your journey by clicking the following button. Hope you will enjoy.</p>
-          <div class="btn-group">
-          <a class="btn btn-success" href="#">Start Journey</a>
-          <a class="btn btn-info"  href="" (click)="onGooogleSignOut()">Sign out</a>
+          <div class="journey-start-button" (click)="homeScreenKikOff('fromStartButton')">
+            <div class="surface">
+              <div class="label">Start Journey</div>
+              <app-common-preloader [preloaderType]="'countdown'" (countDownEnd)="homeScreenKikOff($event)"  (countDownCompReady)="onCountDownPreloaderReay($event)"></app-common-preloader>
+            </div>
           </div>
+          
+          
+          
         </div>
         
       

@@ -54,7 +54,7 @@
   width:80px;
   padding: 10px;
   border-radius:10px;
-  background: rgba(0,0,0,0.5); 
+  background: rgba(0,0,0,0.4); 
   margin: 5px auto;
 }
 
@@ -64,7 +64,7 @@ display: block;
 
 .count-down-preloader span.digit{
  color:white;
- font-size:20px; 
+ font-size:14px; 
 }
 
 /* Safari 4.0 - 8.0 */

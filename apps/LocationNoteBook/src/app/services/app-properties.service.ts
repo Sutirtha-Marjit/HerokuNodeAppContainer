@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+  
 
 @Injectable()
 export class AppPropertiesService {
@@ -17,12 +18,10 @@ export class AppPropertiesService {
 
   public static getPreloaderConfig():any{
     return {
-      maxPreloaderCountDown:10
+      maxPreloaderCountDown:5
     };
   }
 
-  public static getRouteConfigObject(){
-    
-  }
+
 
 }

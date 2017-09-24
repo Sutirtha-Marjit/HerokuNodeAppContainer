@@ -1,27 +1,30 @@
 
-<nav class="main-nav container-fluid">
+<nav class="main-nav container-fluid" *ngIf="CurrentUserProfile!==null && JourneyCanStart">
     <div class="col-md-6">
     <h3 class="BrandHOne2">Location NoteBook</h3>
     </div>
     <div class="col-md-6">
         <div class="float-right welcome-signature">
             <div class="profile-image-container short">
-                <img src="https://i.pinimg.com/736x/13/eb/66/13eb6685bfd702176bcd71f5a4950d92--unique-faces-face-hair.jpg" />
+                <img src="{{CurrentUserProfile.image}}" />
             </div>  
-            <h3 class="G3Text">Welcome Sutirtha</h3>
+            <h3 class="G3Text">Welcome {{CurrentUserProfile.name}}</h3>
             <div class="short-nav">
-                <a>Help</a> <a>FAQ</a>
+                <a href="#"><app-sign-out-action></app-sign-out-action></a><a href="#">Help</a>
             </div>      
         </div>
     </div>    
 </nav>
-<nav class="side-nav">
-    
+<nav class="side-nav" *ngIf="CurrentUserProfile!==null && JourneyCanStart">    
 </nav>
 
-<!--
-<div>
-    <app-login-screen (loginSuccess)="onLoginSuccess($event)">  
+<div class="app--router-base" *ngIf="CurrentUserProfile!==null && JourneyCanStart">
+    <router-outlet (activate)='onActivate($event)'></router-outlet>
+</div>
+
+
+<div *ngIf="!JourneyCanStart">
+    <app-login-screen (onJourneyStart)="onJourneyStart($event)" (loginSuccess)="onLoginSuccess($event)">  
     </app-login-screen>
 </div>
--->
+

@@ -12,11 +12,13 @@ export class LoginScreenComponent implements OnInit {
 
   @ViewChildren(CommonPreloaderComponent) preloaders:QueryList<CommonPreloaderComponent>;
   @Output()loginSuccess:EventEmitter<GoogleProfile> = new EventEmitter<GoogleProfile>();
+  @Output()onJourneyStart:EventEmitter<GoogleProfile> = new EventEmitter<GoogleProfile>();
 
-  
+  compName:string = "LoginScreenComponent";
   googleSignPanelClass:string = "signin-panel";
   loginAppearClass:string = "";
   eventFromSigninButton:boolean = false;
+  eventFromAppStartButton:boolean = false;
   signin:boolean = false;
   decided:boolean = false;
   countdownPreloaderComp:CommonPreloaderComponent;
@@ -27,8 +29,16 @@ export class LoginScreenComponent implements OnInit {
     this.signin = (window["GOOGLE-AUTH-STATUS"]===AppPropertiesService.AuthConstants().signin);
    }
 
-   public homeScreenKikOff(e){
-     alert('kickoff');
+   public homeScreenKikOff(e:any){
+     console.log(e);
+     if(!this.eventFromAppStartButton){
+       this.onJourneyStart.emit(this.googleProfile);
+     }
+     
+     if(e==="fromStartButton"){
+       this.eventFromAppStartButton = true;
+     }
+     
    }
 
    public onCountDownPreloaderReay(e:PreloaderInitEvent){
@@ -72,6 +82,8 @@ export class LoginScreenComponent implements OnInit {
         if(!scripts.length && !this.GAPI){
            
           jstag = document.createElement('script');
+          jstag.setAttribute('async','');
+          jstag.setAttribute('defer','');
           jstag.setAttribute('data-dyn-script','location-note-book');
           document.body.appendChild(jstag);
           jstag.src = AppPropertiesService.AuthConstants().jsPath;

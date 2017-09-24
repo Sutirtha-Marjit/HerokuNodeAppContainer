@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { AppPropertiesService } from './services/app-properties.service';
 import { RouterModule, Routes } from '@angular/router';
 import { GoogleProfile} from './shared/datatypes';
+import {SignOutActionComponent} from './comps/sign-out-action/sign-out-action.component';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +12,20 @@ import { GoogleProfile} from './shared/datatypes';
 export class AppComponent {
   
   public CurrentUserProfile:GoogleProfile = null;
-
+  public JourneyCanStart:boolean = false;
   constructor(){
     
   } 
+
+  public onActivate(comp:Component){
+    console.log('/////////////////////////////////////////////////');
+    console.log(comp);
+    console.log('/////////////////////////////////////////////////');
+  }
+
+  public onJourneyStart(){
+    this.JourneyCanStart = true;
+  }
 
   public onLoginSuccess(gp:GoogleProfile){
     console.log('in app component');
