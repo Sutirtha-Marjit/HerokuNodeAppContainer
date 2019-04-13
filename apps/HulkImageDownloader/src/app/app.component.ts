@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl,FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,14 @@ export class AppComponent implements OnInit{
   title = 'app';
   url='';
   frmGroup:FormGroup = null;
-  consoleOpen = true;
-  constructor(){
+  consoleOpen = false;
+  constructor(private router:Router){
 
+  }
+
+  populateImageList(){
+    this.consoleOpen = false;
+    this.router.navigateByUrl('imagelist');
   }
 
   setSegments(obj){
@@ -22,6 +28,9 @@ export class AppComponent implements OnInit{
 
   toggleConsoleOpen($event){
     this.consoleOpen = $event.checked;
+    if(this.consoleOpen){
+      this.router.navigateByUrl('welcome');
+    }
   }
 
   setDefaultValue(){

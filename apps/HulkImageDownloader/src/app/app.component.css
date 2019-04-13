@@ -26,9 +26,10 @@
 }
 .objectWrap{
   position: absolute;
-  top:133px;
+  top:134px;
   left:0px;
   width: 100%;
+  z-index:999;
 }
 .objectWrap *{
   box-sizing: border-box;
@@ -47,12 +48,10 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    background: #212121;
+    background: rgba(0,0,0,0.7);
   }
   
-  .main-form form > * {
-    width: 100%;
-  }
+  
 
   .main-form input{
       color:white;

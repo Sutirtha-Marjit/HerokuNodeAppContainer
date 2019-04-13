@@ -12,7 +12,7 @@
       </mat-menu>
       
     <mat-slide-toggle [checked]="consoleOpen" (change)="toggleConsoleOpen($event)">Console</mat-slide-toggle>  &nbsp;
-    <button *ngIf="this.frmGroup.value.segmentOne.length>0" mat-button>Load</button> &nbsp;
+    <button (click)="populateImageList()" *ngIf="this.frmGroup.value.segmentOne.length>0" mat-button>Load</button> &nbsp;
   </div>
 </nav>
 </header>
@@ -25,13 +25,13 @@ logo-container
   <div class="objectWrap" *ngIf="consoleOpen">
     <section class="main-form">
         <form [formGroup]="frmGroup">
-            <mat-form-field>
+            <mat-form-field style="width:100%">
                 <input formControlName="mainURL" matInput placeholder="Main url"/>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field style="width:70%">
                 <input formControlName="segmentOne" matInput placeholder="Segment one"/>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field style="width:30%">
                 <input formControlName="segmentTwo" matInput placeholder="Segment two"/>
             </mat-form-field>
             <mat-form-field>
@@ -48,6 +48,8 @@ logo-container
     </section>
   </div>
 </div>
+<router-outlet></router-outlet>
+
 <footer>
 
 </footer>

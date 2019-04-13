@@ -8,11 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "folder-delete": "^1.0.3",
-    "image-downloader": "^3.4.2",
-    "zip-dir": "^1.0.2"
+    "body-parser": "1.18.3",
+    "express": "4.16.4",
+    "folder-delete": "1.0.3",
+    "image-downloader": "3.4.2",
+    "zip-dir": "1.0.2"
   },
   "repository": {
     "type": "git",
