@@ -25,6 +25,6 @@
   },
   "homepage": "https://github.com/Sutirtha-Marjit/HerokuNodeAppContainer#readme",
   "engines": {
-    "node": "4.1.0"
+    "node": "8.11.1"
   }
 }
