@@ -1,20 +1,38 @@
+const path = require('path');
+const express = require("express");
+var bodyParser = require('body-parser');
+const port = 3000;    
+const CustomJobs = require('./customjobs');
+const CommonService = require('./activities/common.service');
+
+const app = express();
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+function activateCommonService(app){
+    if(app){
+        const cmservice = new CommonService(app);
+        
+    }else{
+        console.log('No express job found');
+    }
+}
+
+
 function AppBegin(){
-    const port = 3000;
-    const path = require('path');
-    const express = require("express");
-    const CustomJobs = require('./customjobs');
-    console.log('Dependencies loaded into environment');
-    const app = express();
+    
+    console.log('Dependencies loaded into environment');    
     console.log('Express app created');
     var customjobs = new CustomJobs();
      customjobs.appIndexFileModifier('SerisPhotoDownloader');
      console.log('SerisPhotoDownloader configured');
     
-    app.use(express.static('ui'));    
+    app.use(express.static('ui')); 
+    
     console.log('Static folder assigned');
     
     app.use('/SerisPhotoDownloader', express.static('apps/SerisPhotoDownloader/dist/'));
-
+    activateCommonService(app);
     console.log('Ready to listen');
     app.listen(process.env.PORT || port,function(){
         console.log('Application started');
