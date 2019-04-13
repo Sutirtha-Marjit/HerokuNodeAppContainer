@@ -1,0 +1,59 @@
+.super-header{
+    background:#424242;
+    color:white;
+    padding: 30px;
+}
+
+.super-header .col{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.super-header .col h2{
+  font-weight: normal;
+  margin-top:0px;
+  margin-bottom:0px;
+  margin-right: 30px;
+}
+.logo-container{
+  display: inline-block;
+  width:50px;
+  margin-right: 20px;
+}
+.logo-container img{
+  width:100%;
+  height:auto;
+}
+.objectWrap{
+  position: absolute;
+  top:133px;
+  left:0px;
+  width: 100%;
+}
+.objectWrap *{
+  box-sizing: border-box;
+}
+
+.main-form{
+ 
+  display: inline-block;
+}
+
+.main-form input{
+ width:100%;
+}
+
+.main-form  {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: #212121;
+  }
+  
+  .main-form form > * {
+    width: 100%;
+  }
+
+  .main-form input{
+      color:white;
+  }

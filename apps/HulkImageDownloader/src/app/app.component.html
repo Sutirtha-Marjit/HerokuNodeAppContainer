@@ -1,20 +1,54 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+
+<header class="super-header">
+<nav>
+  <div class="col logo-container"><img src="./assets/images/hulk.png"/></div>
+  <div class="col"><h2>Hulk Image Downloader</h2></div>
+  <div class="col">
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button> &nbsp;
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="setDefaultValue()">Clean up</button>        
+        <button mat-menu-item>Report</button>
+        <button mat-menu-item>Storage</button>
+      </mat-menu>
+      
+    <mat-slide-toggle [checked]="consoleOpen" (change)="toggleConsoleOpen($event)">Console</mat-slide-toggle>  &nbsp;
+    <button *ngIf="this.frmGroup.value.segmentOne.length>0" mat-button>Load</button> &nbsp;
+  </div>
+</nav>
+</header>
+
+<div>
+  <!--
+logo-container
+<img src="./assets/images/hulk.png"/>
+  -->
+  <div class="objectWrap" *ngIf="consoleOpen">
+    <section class="main-form">
+        <form [formGroup]="frmGroup">
+            <mat-form-field>
+                <input formControlName="mainURL" matInput placeholder="Main url"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="segmentOne" matInput placeholder="Segment one"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="segmentTwo" matInput placeholder="Segment two"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" formControlName="startIndex" matInput placeholder="Start"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" formControlName="endIndex" matInput placeholder="End"/>
+            </mat-form-field>
+        </form> 
+        
+        <div>
+            <app-broke-text [url]="url" (urlSegmentDone)="setSegments($event)"></app-broke-text>
+        </div>
+    </section>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<footer>
+
+</footer>
 

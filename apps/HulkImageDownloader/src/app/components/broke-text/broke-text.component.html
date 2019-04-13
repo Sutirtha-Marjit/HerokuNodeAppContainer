@@ -1,0 +1,11 @@
+<br/>
+<div>
+  
+  <div>
+    <ng-container *ngFor="let item of getLinkableArray(); let i=index;">
+        <a *ngIf="!equalsToSlash(item)" (click)="divide(i)" class="clickable">{{item}}</a>
+        <span *ngIf="equalsToSlash(item)">{{item}}</span>
+    </ng-container>    
+  </div>
+  
+</div>

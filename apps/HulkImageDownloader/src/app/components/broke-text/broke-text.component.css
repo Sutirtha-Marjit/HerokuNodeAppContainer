@@ -1,0 +1,8 @@
+.clickable{
+    color:#9c27b0;
+    cursor: pointer;;
+}
+
+.clickable:hover{
+    color:white;
+}
