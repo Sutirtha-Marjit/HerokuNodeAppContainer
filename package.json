@@ -5,7 +5,9 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd apps/HulkImageDownloader && npm run build",
+    "start": "node index.js"
   },
   "dependencies": {
     "body-parser": "1.18.3",
