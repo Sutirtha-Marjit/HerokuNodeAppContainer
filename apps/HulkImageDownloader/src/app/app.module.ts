@@ -13,7 +13,8 @@ import {
         MatFormFieldModule, 
         MatInputModule,
         MatCommonModule,
-        
+        MatGridListModule,
+        MatTooltipModule
         } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -43,6 +44,8 @@ import { WelcomePageComponent } from './components/welcome-page/welcome-page.com
     MatFormFieldModule,
     MatInputModule,
     MatCommonModule,
+    MatGridListModule,
+    MatTooltipModule,
    // MatSidenavModule
    FormsModule,
    ReactiveFormsModule

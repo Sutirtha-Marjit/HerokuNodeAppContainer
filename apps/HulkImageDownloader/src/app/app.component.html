@@ -13,15 +13,12 @@
       
     <mat-slide-toggle [checked]="consoleOpen" (change)="toggleConsoleOpen($event)">Console</mat-slide-toggle>  &nbsp;
     <button (click)="populateImageList()" *ngIf="this.frmGroup.value.segmentOne.length>0" mat-button>Load</button> &nbsp;
-  </div>
+      </div>
 </nav>
 </header>
 
 <div>
-  <!--
-logo-container
-<img src="./assets/images/hulk.png"/>
-  -->
+
   <div class="objectWrap" *ngIf="consoleOpen">
     <section class="main-form">
         <form [formGroup]="frmGroup">
@@ -40,6 +37,7 @@ logo-container
             <mat-form-field>
                 <input type="number" formControlName="endIndex" matInput placeholder="End"/>
             </mat-form-field>
+            <mat-checkbox formControlName="startWithZero">Starts with Zero</mat-checkbox>
         </form> 
         
         <div>
@@ -48,7 +46,7 @@ logo-container
     </section>
   </div>
 </div>
-<router-outlet></router-outlet>
+<router-outlet (activate)="routeComplete($event)"></router-outlet>
 
 <footer>
 

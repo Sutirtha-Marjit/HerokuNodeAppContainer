@@ -1,6 +1,14 @@
 <div class="image-view-wrapper">
-  <small><strong>Image title</strong></small>
+  <div class="heading"><small><strong>Image title</strong></small></div>
   <div class="image-wrap">
-      <img class="image" [src]="imgURL"/>
+      <img #mainImage (load)="onLoad($event)" (error)="onError()" class="image" [src]="imgURL"/>
+      <div class="status-show preloader" [ngStyle]="getPreloaderStyle()"></div>
+      <div class="status-show error-block" [ngStyle]="getErrorBlockStyle()"></div>
+  </div>
+  <br/>
+  <div class="footer">
+    <mat-checkbox (change)="onChooseAction($event)">Download</mat-checkbox>
+    &nbsp;<button mat-button matTooltip="{{dimension.w}} x {{dimension.h}}" [matTooltipPosition]="position">Expand</button>&nbsp;
+    
   </div>
 </div>

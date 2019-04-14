@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl,FormGroup} from '@angular/forms';
-import {Router} from '@angular/router';
+import {Router,ActivatedRoute} from '@angular/router';
+import {ImageListViewComponent} from './components/image-list-view/image-list-view.component';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +13,33 @@ export class AppComponent implements OnInit{
   url='';
   frmGroup:FormGroup = null;
   consoleOpen = false;
+  currentImgRequestList=[];
   constructor(private router:Router){
 
   }
 
+  routeComplete(landedComponent){
+    if(landedComponent instanceof ImageListViewComponent){
+      const c:ImageListViewComponent = landedComponent;
+      c.setList(this.currentImgRequestList); 
+    }
+  }
+
   populateImageList(){
+    this.currentImgRequestList=[];
+    const arr=[];
+    const crval = this.frmGroup.value;
+    for(let i=crval.startIndex;i<crval.endIndex;i++){
+      let p=`${i}`;
+      if(crval.startWithZero && i<10){
+        p = `0${i}`;
+      }
+      arr.push(`${crval.segmentOne}${p}${crval.segmentTwo}`);
+    }
+    this.currentImgRequestList=arr;
     this.consoleOpen = false;
     this.router.navigateByUrl('imagelist');
+
   }
 
   setSegments(obj){
@@ -39,7 +60,8 @@ export class AppComponent implements OnInit{
       segmentOne:'',
       segmentTwo:'',
       startIndex:1,
-      endIndex:12
+      endIndex:12,
+      startWithZero:true
     })
   }
 
@@ -49,13 +71,15 @@ export class AppComponent implements OnInit{
     const segmentTwo = new FormControl();
     const startIndex = new FormControl();
     const endIndex = new FormControl();
+    const startWithZero = new FormControl();
     
     this.frmGroup = new FormGroup({
       mainURL:mainURL,
       segmentOne:segmentOne,
       segmentTwo:segmentTwo,
       startIndex:startIndex,
-      endIndex:endIndex
+      endIndex:endIndex,
+      startWithZero:startWithZero
     });
     this.setDefaultValue();
     this.frmGroup.valueChanges.subscribe((event)=>{

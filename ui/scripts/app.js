@@ -65,23 +65,23 @@ function AppController(){
 
 AppController();
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
-    $.ajax({
-        url:'/common/service/imageserisloader/',
-        type:'POST',
-        data:{imageList:[
-                        'https://img.grouponcdn.com/deal/dfwpvKGQkhU2vbq92buD/gu-2048x1229.jpg/v1/c700x420.jpg',
-                        'https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2542/SITours/orlando-sunrise-hot-air-balloon-ride-in-orlando-697666.jpg',
-                        'https://cdn.getyourguide.com/img/tour_img-156561-148.jpg'
-                        ]},
-        success:function(data){
-            console.log(data);
-        },
-        error:function(){
+//     $.ajax({
+//         url:'/common/service/imageserisloader/',
+//         type:'POST',
+//         data:{imageList:[
+//                         'https://img.grouponcdn.com/deal/dfwpvKGQkhU2vbq92buD/gu-2048x1229.jpg/v1/c700x420.jpg',
+//                         'https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2542/SITours/orlando-sunrise-hot-air-balloon-ride-in-orlando-697666.jpg',
+//                         'https://cdn.getyourguide.com/img/tour_img-156561-148.jpg'
+//                         ]},
+//         success:function(data){
+//             console.log(data);
+//         },
+//         error:function(){
 
-        }
-    })
+//         }
+//     })
 
 
-});
+// });

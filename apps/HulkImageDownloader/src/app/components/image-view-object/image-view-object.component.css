@@ -1,16 +1,54 @@
 .image-view-wrapper{
     width:100%;
-    height:250px;
+    height:350px;
     overflow: hidden;
     position: relative;
+    padding-top:10px;
 }
 
 .image-wrap {
     text-align: center;
     background:#424242;
+    width: 100%;
+    height: 200px;
+    position: relative;
 }
 .image-wrap img{
     height:100%;
     width:auto;
     
+}
+
+.heading{
+    background: #80bb38;
+    padding:4px 8px;
+    display: block;
+}
+
+.footer{
+    background: #313532;
+    padding:4px 8px;
+    display: block;
+}
+
+.status-show{
+    transition: all ease-out 2.3s;
+    width:100%;
+    height: 100%;
+    position: absolute;
+    top:0px;
+    left:0px;    
+    z-index: 899;
+}
+
+.preloader{   
+    background: white url('/assets/images/preloader01.gif') no-repeat center center;
+    background-size:50% auto; 
+    /*background: url('assets/images/preloader01.gif');*/
+}
+
+.error-block{   
+    background: white url('/assets/images/not-found.jpg') no-repeat center center;
+    background-size:50% auto; 
+    /*background: url('assets/images/preloader01.gif');*/
 }
