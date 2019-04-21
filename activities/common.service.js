@@ -1,26 +1,42 @@
 const ImageLoader = require('./imageloader');
 const getDefaultObj = require('../generaljson');
 const deleteFolder  = require('folder-delete');
+const express = require('express');
 const zipdir = require('zip-dir');
 const fs = require('fs');
 class CommonService {
     constructor(app) {
         console.log('CommonService initiated');
+        this.zipurl='/napoleon/credentials/compactfiles/';
         this.folderName = 'quick-deal';
         this.imageDownloadFolder = `./${this.folderName}/`;
         this.createQuickDealFolder();
-        app.post('/common/service/imageserisloader/',(req,res)=>{
+        app.use(this.zipurl, express.static('quick-deal'));
+        app.get('/api/common/service/info',(req,res)=>{
+            const obj = getDefaultObj();
+            obj.data = "Heroku Node app container";
+            obj.meta.status = true;
+            res.json(obj);
+        });
+        
+
+        app.post('/api/common/service/imageserisloader/',(req,res)=>{
+            console.log('Req reached!!!');
             const obj = getDefaultObj();
             if(req.body.imageList){
                 obj.data = req.body.imageList;
+                
                 this.loadSerisOfImage(req.body.imageList).then((data)=>{
                     console.log(data);
                     this.zipIt(`${this.imageDownloadFolder}${data.dirName}`,`${this.imageDownloadFolder}${data.dirName}.zip`);
                     obj.data = data;
+                    
                     res.json(obj);
                 }).catch((data)=>{
-                    console.log(data);
+                    obj.data = data;
+                    res.json(obj);
                 });
+                
 
             }else{
                 obj.mets.status = false;
@@ -80,7 +96,12 @@ class CommonService {
                 let c=0;
                 const checkAndFinish = ()=>{
                     if(c===max){
-                        resolve({source:resultArr,dirName:dirName,dest:[]});
+                        resolve({
+                            source: resultArr,
+                            dirName: dirName,
+                            zip: `${this.zipurl}${dirName}.zip`,
+                            dest: []
+                        });
                     }
                 };
                 seris.forEach((crURL,index)=>{

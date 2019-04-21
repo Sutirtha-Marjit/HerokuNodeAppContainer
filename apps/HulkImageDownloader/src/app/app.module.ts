@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 import {ImageDownloaderRoutingModule} from './image-downloader-routing/image-downloader-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -14,7 +15,8 @@ import {
         MatInputModule,
         MatCommonModule,
         MatGridListModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatDialogModule
         } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -23,6 +25,7 @@ import { BrokeTextComponent } from './components/broke-text/broke-text.component
 import { ImageViewObjectComponent } from './components/image-view-object/image-view-object.component';
 import { ImageListViewComponent } from './components/image-list-view/image-list-view.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
+import { ZippingDialogComponent } from './components/zipping-dialog/zipping-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +33,13 @@ import { WelcomePageComponent } from './components/welcome-page/welcome-page.com
     BrokeTextComponent,
     ImageViewObjectComponent,
     ImageListViewComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    ZippingDialogComponent
   ],
   imports: [    
     ImageDownloaderRoutingModule,
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MatButtonModule,
@@ -46,6 +51,7 @@ import { WelcomePageComponent } from './components/welcome-page/welcome-page.com
     MatCommonModule,
     MatGridListModule,
     MatTooltipModule,
+    MatDialogModule,
    // MatSidenavModule
    FormsModule,
    ReactiveFormsModule

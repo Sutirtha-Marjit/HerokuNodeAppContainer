@@ -1,1 +1,1 @@
-web: npm run cliinstall && moksh && start
+web: node index.js

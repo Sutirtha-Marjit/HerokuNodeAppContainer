@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, Output, EventEmitter } from '@angular/core';
 import { ImageSelectedItem} from '../image-view-object/image-view-object.component';
 
 @Component({
@@ -8,6 +8,7 @@ import { ImageSelectedItem} from '../image-view-object/image-view-object.compone
 })
 export class ImageListViewComponent implements OnInit {
 
+  @Output() onSelectionUpdate = new EventEmitter<Array<string>>();
   constructor(private ngZone:NgZone) {
     const list = window.sessionStorage.getItem('list');
     if(list){
@@ -32,6 +33,7 @@ export class ImageListViewComponent implements OnInit {
     }
 
     console.log(this.selectionList);
+    this.onSelectionUpdate.emit(this.selectionList);
   }
 
   setList(newList:Array<any>){

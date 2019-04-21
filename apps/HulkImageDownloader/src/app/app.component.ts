@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl,FormGroup} from '@angular/forms';
 import {Router,ActivatedRoute} from '@angular/router';
+import { GeneralService } from './general.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {ImageListViewComponent} from './components/image-list-view/image-list-view.component';
+import {ZippingDialogComponent} from './components/zipping-dialog/zipping-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +17,14 @@ export class AppComponent implements OnInit{
   frmGroup:FormGroup = null;
   consoleOpen = false;
   currentImgRequestList=[];
-  constructor(private router:Router){
+  selectionList=[];
+  zipProgress=false;
+  zipData = [];
+  constructor(
+    private router: Router,
+    private gs: GeneralService,
+    private dialog: MatDialog
+  ) {
 
   }
 
@@ -22,9 +32,35 @@ export class AppComponent implements OnInit{
     if(landedComponent instanceof ImageListViewComponent){
       const c:ImageListViewComponent = landedComponent;
       c.setList(this.currentImgRequestList); 
+      c.onSelectionUpdate.subscribe((list:Array<string>)=>{
+        this.selectionList = list;
+      })
     }
   }
 
+  zipRequest(){
+    if(this.selectionList){
+      this.zipProgress = true;
+      const arr=[];
+      this.selectionList.forEach((el)=>{
+        arr.push(el.url);
+      });
+      this.gs.postZipRequest(arr).subscribe((zipData:any)=>{
+       
+        this.zipProgress=false;
+        this.zipData.push({
+          time:(new Date()),
+          url:`${this.gs.getServerURl()}/${zipData.data.zip}`,
+          name:'zip'
+        })
+        
+      },(error)=>{
+        console.log(error);
+      })
+    }
+  }
+
+  
   populateImageList(){
     this.currentImgRequestList=[];
     const arr=[];

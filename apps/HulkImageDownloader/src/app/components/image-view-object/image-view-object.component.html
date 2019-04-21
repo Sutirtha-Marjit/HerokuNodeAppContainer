@@ -1,7 +1,7 @@
 <div class="image-view-wrapper">
-  <div class="heading"><small><strong>Image title</strong></small></div>
+  <div class="heading"><small><strong>{{dimension.w}} x {{dimension.h}}</strong></small></div>
   <div class="image-wrap">
-      <img #mainImage (load)="onLoad($event)" (error)="onError()" class="image" [src]="imgURL"/>
+      <img #mainImage (load)="onLoad()" (error)="onError()" class="image" [src]="imgURL"/>
       <div class="status-show preloader" [ngStyle]="getPreloaderStyle()"></div>
       <div class="status-show error-block" [ngStyle]="getErrorBlockStyle()"></div>
   </div>
@@ -11,4 +11,4 @@
     &nbsp;<button mat-button matTooltip="{{dimension.w}} x {{dimension.h}}" [matTooltipPosition]="position">Expand</button>&nbsp;
     
   </div>
-</div>
+</div> 

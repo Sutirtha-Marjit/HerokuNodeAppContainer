@@ -10,10 +10,18 @@
         <button mat-menu-item>Report</button>
         <button mat-menu-item>Storage</button>
       </mat-menu>
-      
+      <button mat-button [matMenuTriggerFor]="zipMenu">Zips</button> &nbsp;
+      <mat-menu #zipMenu="matMenu">
+        <a mat-menu-item *ngFor="let item of zipData" target="_blank" href="{{item.url}}">
+          <strong>{{item.name}}</strong> &nbsp; 
+          <small>{{item.time | date:'shortTime'}}</small>
+        </a>
+      </mat-menu>
     <mat-slide-toggle [checked]="consoleOpen" (change)="toggleConsoleOpen($event)">Console</mat-slide-toggle>  &nbsp;
     <button (click)="populateImageList()" *ngIf="this.frmGroup.value.segmentOne.length>0" mat-button>Load</button> &nbsp;
-      </div>
+    <button (click)="zipRequest()" *ngIf="this.selectionList.length>0 && !zipProgress" mat-button>Create a zip</button>   
+    <span *ngIf="zipProgress"><img style="width:40px; height:auto;" src="./assets/images/small-preloader.gif"/></span>
+  </div>
 </nav>
 </header>
 
